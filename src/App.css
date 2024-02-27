@@ -1,0 +1,16 @@
+.cloud-container {
+  width: 100%;
+  height: 400vh;
+  overflow: hidden;
+}
+
+.cloud {
+  width: 350px;
+  height: 350px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+}
+
