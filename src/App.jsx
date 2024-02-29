@@ -1,9 +1,9 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import CloudAnimation from "./components/CloudAnimation";
-import JaiCloudAnimation from "./components/JaiCloudAnimation";
+
+// import CloudAnimation from "./components/CloudAnimation";
+// import JaiCloudAnimation from "./components/JaiCloudAnimation";
+
+import SvgTest from "./components/SvgTest";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -11,7 +11,8 @@ function App() {
   return (
     <>
       {/* <CloudAnimation /> */}
-      <JaiCloudAnimation />
+      {/* <JaiCloudAnimation /> */}
+      <SvgTest />
     </>
   );
 }

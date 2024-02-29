@@ -4,70 +4,89 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./JaiCloudAnimation.css";
 
 function JaiCloudAnimation() {
-  const cloudRef = useRef(null);
-  const [isAnimating, setIsAnimating] = useState(false);
-
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const tl = gsap.timeline({
+    // Define the timeline
+    var tl = gsap.timeline({
       scrollTrigger: {
-        trigger: cloudRef.current,
-        start: "top top",
-        end: "bottom bottom",
+        trigger: ".second",
+        start: "0% 90%",
+        end: "20% 10%",
         scrub: true,
-        markers: true
+        markers: true,
       },
     });
 
-    tl.to(cloudRef.current, {
-      x: "-80vw",
-      y: "80vh",
-      duration: 2,
-      onStart: () => setIsAnimating(true),
-      onComplete: () => setIsAnimating(false),
-    });
+    // Add animation steps to the timeline
+    tl.to(
+      "#cloud",
+      {
+        top: "90%",
+        right: "90%",
+        duration: 5,
+      },
+      "cloud"
+    );
 
-    ScrollTrigger.create({
-      trigger: cloudRef.current,
-      start: "top top",
-      end: "bottom bottom",
-      onEnter: () => {
-        if (!isAnimating) {
-           // Smooth scroll to the desired position
-           smoothScrollTo(cloudRef.current, window.innerHeight);
-        }
+    var tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".second",
+        start: "90% 90%",
+        end: "100% 10%",
+        scrub: true,
+        markers: true,
       },
     });
-  }, [isAnimating]);
 
-
-   // Function for smooth scrolling
-   const smoothScrollTo = (target, offset) => {
-    gsap.to(window, {
-      duration: 1, // Adjust as needed
-      scrollTo: {
-        y: target.offsetTop - offset,
-        autoKill: false,
+      
+    tl2.to(
+      "#cloud",
+      {
+        top: "270%",
+        right: "50%",
+        duration: 2,
       },
-    });
-  };
+      "cloud"
+    );
+  }, []);
 
   return (
-    <div className="App">
-      <h1>GSAP Cloud Animation</h1>
-      <div className="content">
-        <h3 ref={cloudRef} class="cloud">
+    <>
+      <div className="w-screen h-screen">
+        <div
+          className="w-full zero"
+          style={{ height: "100px", background: "black" }}
+        ></div>
+        <div
+          className="w-full first"
+          style={{ height: "500px", background: "#05ff47" }}
+        >
           <img
             src="src/assets/Cloud.png"
             style={{ height: "100px" }}
             alt="Cloud"
+            id="cloud"
           />
-        </h3>
-        
+        </div>
+        <div
+          className="w-full second"
+          style={{ height: "500px", background: "blue" }}
+        ></div>
+        <div
+          className="w-full third"
+          style={{ height: "500px", background: "yellow" }}
+        ></div>
+        <div
+          className="w-full fourth"
+          style={{ height: "500px", background: "#d800ff" }}
+        ></div>
+        <div
+          className="w-full fifth"
+          style={{ height: "500px", background: "#00e7ff" }}
+        ></div>
       </div>
-      <div style={{ height: "200vh" }}></div>
-    </div>
+    </>
   );
 }
 

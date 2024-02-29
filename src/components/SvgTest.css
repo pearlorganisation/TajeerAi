@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    
+  }
+
+  #svg-path, #path {
+    position: absolute;
+    z-index: 1;
+  }
+
+  section {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+  }
+  
+  #track { 
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .section-1 {
+    background: blue;
+  }
+  
+  .section-2 {
+    background: green;
+  }
+  .section-3 {
+    background: rgb(0, 225, 255);
+  }
+  .section-4 {
+    background: yellow;
+  }
+  
+  #cloud{
+    position: absolute;
+    /* width: 100px; */
+    height: 100px;
+    top: 0;
+    left: 0;
+    z-index: 3;
+  }
+  
+  footer {
+    height: 200px;
+  }
