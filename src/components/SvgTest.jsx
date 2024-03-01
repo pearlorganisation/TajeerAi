@@ -5,7 +5,6 @@ import { useGSAP } from "@gsap/react";
 import { MotionPathPlugin, ScrollTrigger } from "gsap/all";
 
 const SvgTest = () => {
-  
   useGSAP(() => {
     gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
     // gsap code here
@@ -13,9 +12,9 @@ const SvgTest = () => {
     // timeline 1
     let tl = gsap.timeline({
       scrollTrigger: {
-        trigger: "#track",
-        start: 0,
-        end: "+=500%+=50px",
+        trigger: "#path1",
+        start: "10% center",
+        end: "bottom center",
         // end: '+=' + ((window.innerHeight * 3) + 50),
         scrub: true,
         markers: true,
@@ -26,46 +25,74 @@ const SvgTest = () => {
       duration: 1,
       ease: "none",
       motionPath: {
-        path: "#path",
-        align: "#path",
+        path: "#path1",
+        align: "#path1",
         alignOrigin: [0.5, 0.5],
       },
     });
+
+    // timeline 2
+   let tl2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#path1",
+      start: "bottom center",
+      endTrigger: "#track",
+      end: "bottom center",
+      // end: "bottom center",
+      // end: '+=' + ((window.innerHeight * 3) + 50),
+      scrub: true,
+      markers: true,
+    },
   });
 
+  tl2.to("#cloud", {
+    duration: 5,
+    ease: "none",
+    motionPath: {
+      path: [
+        { y: '200vh'}, 
+        { y: '250vh'}, 
+        { y: '300vh' }, 
+        { y: '350vh'},
+        { y: '400vh'},
+        { y: '450vh'},
+        { y: '500vh'},
+      ],
+    },
+  });
+
+
+  });
+
+
+   
   return (
     <>
-      <div id="track" style={{height: "100vh"}}>
-        <img
-          src="src/assets/Cloud.png"
-          alt="Cloud"
-          id="cloud"
-        />
+      <img src="src/assets/Cloud.png" alt="Cloud" id="cloud" />
+      <div id="track">
+        <nav className="h-32"></nav>
+        <section className="section-1">
+          <svg
+            viewBox="0 0 1577 1043"
+            fill="none"
+            // preserveAspectRatio="xMidYMax meet"
+          >
+            <path
+              id="path1"
+              d="M1576 1C1150.83 33.6667 248.8 192.5 42 566.5C-216.5 1034 819.5 941.5 819.5 1043"
+              stroke="red"
+            />
+          </svg>
+          
 
-        <svg
-          viewBox="0 0 1489 6662"
-          fill="none"
-          preserveAspectRatio="xMidYMax meet"
-          id="svg-path"
-        >
-          <path
-            id="path"
-            d="M1488 0.5C1165 123 434.3 452.7 95.5 791.5C-243.3 1130.3 405 1620.67 771.5 1823.5V6662"
-            stroke="red"
-          />
-        </svg>
-
-        <section className="section-1"></section>
-        <section className="section-2"></section>
+        </section>
+        <section className="section-2">
+          
+        </section>
         <section className="section-3"></section>
         <section className="section-4"></section>
         <section className="section-5"></section>
-        
       </div>
-
-    
-
-
     </>
   );
 };

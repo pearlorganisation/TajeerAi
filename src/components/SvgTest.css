@@ -1,27 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
     margin: 0;
     height: 100vh;
-    width: 100vw;
-    
-  }
-
-  #svg-path, #path {
-    position: absolute;
-    z-index: 1;
-  }
-
-  section {
-    height: 100vh;
-    width: 100vw;
-    position: relative;
+    width: 100vw; 
   }
   
   #track { 
     position: relative;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
+    padding-top: 100px;
   }
-  
+
+  .path {
+    position: absolute;
+    z-index: 2;
+  }
+
+  section {
+    height:100vh;
+    border: 1px solid black;
+    position: relative;
+  }
+/* 
   .section-1 {
     background: blue;
   }
@@ -35,14 +39,21 @@ body {
   .section-4 {
     background: yellow;
   }
+   */
   
-  #cloud{
+   #cloud{
     position: absolute;
     /* width: 100px; */
+    /* top:100px; */
     height: 100px;
-    top: 0;
-    left: 0;
     z-index: 3;
+
+  }
+
+  @media screen and (max-width: 800px) {
+      #cloud {
+        height: 50px;
+      }
   }
   
   footer {
