@@ -3,59 +3,118 @@
 }
 
 body {
-    margin: 0;
-    height: 100vh;
-    width: 100vw; 
-  }
-  
-  #track { 
-    position: relative;
-    height: 100%;
-    width: 100%;
-    padding-top: 100px;
-  }
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  scroll-behavior: smooth;
+}
 
-  .path {
-    position: absolute;
-    z-index: 2;
-  }
+#track {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding-top: 100px;
+}
 
-  section {
-    height:100vh;
-    border: 1px solid black;
-    position: relative;
-  }
-/* 
-  .section-1 {
-    background: blue;
-  }
-  
-  .section-2 {
-    background: green;
-  }
-  .section-3 {
-    background: rgb(0, 225, 255);
-  }
-  .section-4 {
-    background: yellow;
-  }
-   */
-  
-   #cloud{
-    position: absolute;
-    /* width: 100px; */
-    /* top:100px; */
-    height: 100px;
-    z-index: 3;
+.path {
+  position: absolute;
+  z-index: 2;
+}
 
-  }
+section {
+  height: 100vh;
+  border: 1px solid black;
+  position: relative;
+}
 
-  @media screen and (max-width: 800px) {
-      #cloud {
-        height: 50px;
-      }
+.section-5 {
+  height:300vh;
+}
+
+#animated-element {
+  position: absolute;
+  /* height: 150px; */
+  width: fit-content; 
+  right:0;
+  opacity: 0;
+  z-index: 2;
+}
+
+#cloud {
+  position: relative;
+  height: 150px;
+  z-index: 10;
+}
+
+/* .cloud-absolute {
+  position: absolute;
+  top:0;
+  left:0;
+}
+
+.cloud-fixed {
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform: translateX(-50%) translateY(-50%);
+} */
+
+#thunder1 {
+  position: absolute;
+  bottom:-35px;
+  z-index: 3;
+  height: 100px;
+  animation: animateThunder 0.5s infinite; /* Adjust animation duration as needed */
+  opacity: 0; /* Set initial opacity to 0 */
+}
+
+#thunder2 {
+  position: absolute;
+  bottom:-50px;
+  left:25%;
+  z-index: 3;
+  height: 100px;
+  animation: animateThunder 1s infinite; /* Adjust animation duration as needed */
+  opacity: 0; /* Set initial opacity to 0 */
+}
+
+#thunder3 {
+  position: absolute;
+  bottom:-30px;
+  left: 50%;
+  z-index: 3;
+  height: 100px;
+  animation: animateThunder 0.7s infinite; /* Adjust animation duration as needed */
+  opacity: 0; /* Set initial opacity to 0 */
+}
+
+@keyframes animateThunder {
+  0% {
+    opacity: 0;
   }
-  
-  footer {
-    height: 200px;
+  20% {
+    opacity: 1;
   }
+  40% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #cloud {
+    height: 50px;
+  }
+}
+
+footer {
+  height: 200px;
+}
