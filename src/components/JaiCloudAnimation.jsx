@@ -1,93 +1,64 @@
-import React, { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "./JaiCloudAnimation.css";
+import React, { useState } from "react";
+import { Sketch } from "react-p5";
 
-function JaiCloudAnimation() {
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+const JaiCloudAnimation = () => {
+  const [lightningOpacity, setLightningOpacity] = useState(0);
 
-    // Define the timeline
-    var tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".second",
-        start: "0% 90%",
-        end: "20% 10%",
-        scrub: true,
-        markers: true,
-      },
-    });
+  const setup = (p5, canvasParentRef) => {
+    p5.createCanvas(600, 600).parent(canvasParentRef);
+    p5.frameRate(60);
+    p5.angleMode(p5.DEGREES);
+    p5.smooth();
+  };
 
-    // Add animation steps to the timeline
-    tl.to(
-      "#cloud",
-      {
-        top: "90%",
-        right: "90%",
-        duration: 5,
-      },
-      "cloud"
-    );
+  const draw = (p5) => {
+    p5.background(68, 69, 69);
 
-    var tl2 = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".second",
-        start: "90% 90%",
-        end: "100% 10%",
-        scrub: true,
-        markers: true,
-      },
-    });
+    if (p5.random() < 0.01) {
+      p5.background(255);
+      setLightningOpacity(240);
+      generateLightning(p5);
+    }
 
-      
-    tl2.to(
-      "#cloud",
-      {
-        top: "270%",
-        right: "50%",
-        duration: 2,
-      },
-      "cloud"
-    );
-  }, []);
+    setLightningOpacity(p5.constrain(lightningOpacity - 3, 0, 255));
 
-  return (
-    <>
-      <div className="w-screen h-screen">
-        <div
-          className="w-full zero"
-          style={{ height: "100px", background: "black" }}
-        ></div>
-        <div
-          className="w-full first"
-          style={{ height: "500px", background: "#05ff47" }}
-        >
-          <img
-            src="src/assets/Cloud.png"
-            style={{ height: "100px" }}
-            alt="Cloud"
-            id="cloud"
-          />
-        </div>
-        <div
-          className="w-full second"
-          style={{ height: "500px", background: "blue" }}
-        ></div>
-        <div
-          className="w-full third"
-          style={{ height: "500px", background: "yellow" }}
-        ></div>
-        <div
-          className="w-full fourth"
-          style={{ height: "500px", background: "#d800ff" }}
-        ></div>
-        <div
-          className="w-full fifth"
-          style={{ height: "500px", background: "#00e7ff" }}
-        ></div>
-      </div>
-    </>
-  );
-}
+    drawLightning(p5);
+    drawCat(p5);
+    if (lightningOpacity > 0) {
+      drawCatShadow(p5, lightningOpacity);
+    }
+
+    // Ground
+    p5.stroke(50, 50, 50, 100);
+    p5.strokeWeight(2);
+    p5.fill(87, 89, 89);
+    p5.rect(0, 516, p5.width, 85);
+
+    // Rain
+    runRain(p5);
+  };
+
+  const generateLightning = (p5) => {
+    // Logic for generating lightning
+  };
+
+  const drawLightning = (p5) => {
+    // Logic for drawing lightning
+  };
+
+  const drawCat = (p5) => {
+    // Logic for drawing cat
+  };
+
+  const drawCatShadow = (p5, opacity) => {
+    // Logic for drawing cat shadow
+  };
+
+  const runRain = (p5) => {
+    // Logic for running rain
+  };
+
+  return <Sketch setup={setup} draw={draw} />;
+};
 
 export default JaiCloudAnimation;

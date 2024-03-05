@@ -7,6 +7,7 @@ body {
   height: 100vh;
   width: 100vw;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 #track {
@@ -61,57 +62,83 @@ section {
 
 #thunder1 {
   position: absolute;
-  bottom:-35px;
+  bottom:30px;
+  left:10%;
   z-index: 3;
   height: 100px;
-  animation: animateThunder 0.5s infinite; /* Adjust animation duration as needed */
+  animation-duration: 0.4s;
   opacity: 0; /* Set initial opacity to 0 */
+  transform: rotate(20deg);
 }
 
 #thunder2 {
   position: absolute;
-  bottom:-50px;
-  left:25%;
+  bottom:-20px;
+  left:40%;
   z-index: 3;
   height: 100px;
-  animation: animateThunder 1s infinite; /* Adjust animation duration as needed */
+  animation-duration: 0.5s;
+  /* transition: 0.1s; */
   opacity: 0; /* Set initial opacity to 0 */
 }
 
 #thunder3 {
   position: absolute;
-  bottom:-30px;
-  left: 50%;
+  bottom:10px;
+  left: 70%;
   z-index: 3;
   height: 100px;
-  animation: animateThunder 0.7s infinite; /* Adjust animation duration as needed */
+  animation-duration: 0.3s;
   opacity: 0; /* Set initial opacity to 0 */
+  transform: rotate(-30deg);
+}
+
+.thunder-animation {
+  animation: animateThunder 0.3s infinite; /* Adjust animation duration as needed */
 }
 
 @keyframes animateThunder {
   0% {
     opacity: 0;
+    bottom:-35px
   }
   20% {
-    opacity: 1;
+    opacity: 0.6;
+    bottom:-40px
   }
   40% {
-    opacity: 0;
+    opacity: 1;
+    bottom:-50px
   }
   60% {
-    opacity: 1;
+    opacity: 0.6;
+    bottom:-70px;
   }
   80% {
-    opacity: 0;
+    opacity: 0.2;
+    bottom: -80px
   }
   100% {
-    opacity: 1;
+    opacity: 0;
+    bottom: -100px;
   }
 }
 
 @media screen and (max-width: 800px) {
   #cloud {
     height: 50px;
+  }
+
+  #thunder1{
+    height:40px
+  }
+
+  #thunder2{
+    height:40px
+  }
+
+  #thunder3{
+    height:40px
   }
 }
 
