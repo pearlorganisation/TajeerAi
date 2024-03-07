@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.0",
+    "@studio-freight/lenis": "^1.0.39",
     "chart.js": "^4.4.0",
     "faker": "^5.5.3",
     "framer-motion": "^10.12.16",
