@@ -45,7 +45,6 @@ const CloudAnimation = () => {
         y: "+=50vh",
         //   backgroundColor: "#808080", // turn gray
         // filter: "drop-shadow(10px 10px 15px rgba(28,163,236))",
-
         duration: 2,
         scale: 1.2,
         onComplete: () => {
