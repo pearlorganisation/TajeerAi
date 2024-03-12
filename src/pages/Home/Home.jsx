@@ -1,11 +1,11 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import "./SvgTest.css";
+import "./Home.css";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { MotionPathPlugin, ScrollTrigger } from "gsap/all";
 import Lenis from "@studio-freight/lenis";
 
-const SvgTest = () => {
+const Home = () => {
   const lenis = new Lenis();
 
   // lenis.on("scroll", (e) => {
@@ -498,4 +498,4 @@ const SvgTest = () => {
   );
 };
 
-export default SvgTest;
+export default Home;
