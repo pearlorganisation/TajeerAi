@@ -14,7 +14,7 @@
     position: relative;
     height: 100%;
     width: 100%;
-    padding-top: 100px;
+    /* padding-top: 100px; */
   }
   
   .path {
@@ -33,7 +33,25 @@
   }
   
   .section-9 {
+    background-color: #90c9f7;
     height:300vh;
+  }
+
+  .section-10 {
+    height: 200vh;
+    
+  }
+
+  .section-11 {
+    height: 1000vh;
+  }
+
+  .section-12 {
+    height: 600vh;
+  }
+
+  .section-13 {
+    height: 600vh;
   }
   
   #animated-element {
@@ -50,19 +68,6 @@
     height: 150px;
     z-index: 10;
   }
-  
-  /* .cloud-absolute {
-    position: absolute;
-    top:0;
-    left:0;
-  }
-  
-  .cloud-fixed {
-    position: fixed;
-    top:50%;
-    left:50%;
-    transform: translateX(-50%) translateY(-50%);
-  } */
   
   #thunder1 {
     position: absolute;
@@ -206,11 +211,57 @@
     }
   }
   
-  .glow-animation {
-    /* animation: glowBloom 1s infinite; */
-    box-shadow: 0 0 5px 2px #e3ff48;
-    transition: 0.4s ease;
+
+  
+  
+
+  /* scroll down animation */
+
+  .mouse-container {
+    width: 100vw;
+    height: 100%;
+    /* background-color: #c9d6df; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
+  .field {
+    display: flex;
+    align-items: center;
+  }
   
+  .mouse {
+    width: 50px;
+    height: 90px;
+    border: 3px solid #333;
+    border-radius: 60px;
+    position: relative;
+  }
+  .mouse::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    border-radius: 50%;
+    opacity: 1;
+    animation: wheel 2s infinite;
+    -webkit-animation: wheel 2s infinite;
+  }
   
+  @keyframes wheel {
+    to {
+      opacity: 0;
+      top: 60px;
+    }
+  }
+  @-webkit-keyframes wheel {
+    to {
+      opacity: 0;
+      top: 60px;
+    }
+  }
