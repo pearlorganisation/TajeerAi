@@ -238,7 +238,7 @@ const Home = () => {
         start: "top center",
         end: "center center",
         scrub: true,
-        markers: true,
+        // markers: true,
         onLeave: () => {
       
           setBulbOn(true);
@@ -277,7 +277,7 @@ const Home = () => {
         start: "top center",
         end: "bottom center",
         scrub: true,
-        markers: true,
+        // markers: true,
     }
    })
   });
