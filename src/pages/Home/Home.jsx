@@ -112,6 +112,7 @@ const Home = () => {
     });
 
     gsap.to("#animated-element", {
+      duration:1,
       scrollTrigger: {
         trigger: ".section-5",
         start: "top top",
@@ -179,7 +180,7 @@ const Home = () => {
         },
         onLeave: () => {
           setShowCenterThunder(true);
-          setThunderAnimation2(false);
+          // setThunderAnimation2(false);
           gsap.set("#thunder2", {
             position: "fixed",
             top: "50%",
@@ -226,7 +227,7 @@ const Home = () => {
         start: "top center",
         end: "center center",
         scrub: true,
-        // markers: true,
+        markers: true,
       },
     });
 
@@ -236,24 +237,28 @@ const Home = () => {
       opacity: 0,
     });
 
-    gsap.to("#licht", {
+    gsap.to("#bulb-container", {
       duration:1,
       scrollTrigger: {
-        trigger: "#licht",
+        trigger: "#bulb-container",
         start: "top center",
         end: "bottom center",
-        // scrub: true,
+        scrub: true,
         // markers: true,
         onEnter: () => {
           setBulbOn(true);
+          setThunderAnimation2(false)
+          setShowCenterThunder(false)
         },
         onLeaveBack: () => {
           setBulbOn(false);
+          setThunderAnimation2(true)
+          setShowCenterThunder(true)
         },
       },
       opacity: 1,
     });
-    //bulb animation
+    
   });
 
   return (
@@ -322,9 +327,13 @@ const Home = () => {
           </svg>
 
           {/* scroll down animation */}
-          <div className="container absolute bottom-0">
-            <div className="field">
-              <div className="mouse"></div>
+          <div className="mouse-container absolute bottom-0">
+            <div className="field flex flex-col gap-2 font-semibold">
+              <div className="mouse">
+                
+              </div>
+              Start Scroll to begin
+              
             </div>
           </div>
         </section>
@@ -345,7 +354,7 @@ const Home = () => {
         <section className="section-9 realtive">
           <div
             id="bulb-container"
-            className="h-48 w-fit absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3"
+            className="w-fit absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/3"
           >
             <svg
               id="bulb-svg"
@@ -363,8 +372,9 @@ const Home = () => {
               <g id="bulb">
                 <path
                   id="bulb_body"
-                  fill={`${bulbOn ? "#FFFF00" : "#FFFFFF"}`}
-                  stroke="#3D3D3D"
+                  className="transition duration-1000"
+                  fill={`${bulbOn ? "#FFFF50" : "#FFFFFF"}`}
+                  stroke={`${bulbOn ? "#FFFF50" : "#3D3D3D"}`}
                   strokeWidth="3"
                   strokeLinecap="square"
                   strokeMiterlimit="10"
@@ -430,7 +440,7 @@ const Home = () => {
 
                 {/* More elements for bulb */}
               </g>
-              <g id="licht" style={{ opacity: "0" }}>
+              <g id="licht" style={{ opacity: `${bulbOn ? '1' : '0'}`}}>
                 <line
                   fill="none"
                   stroke="#FFFF00"
@@ -439,7 +449,7 @@ const Home = () => {
                   strokeMiterlimit="10"
                   x1="151.088"
                   y1="90.5"
-                  x2="170"
+                  x2="172"
                   y2="90.5"
                 />
                 <line
@@ -450,7 +460,7 @@ const Home = () => {
                   strokeMiterlimit="10"
                   x1="25"
                   y1="90.5"
-                  x2="43.912"
+                  x2="45.912"
                   y2="90.5"
                 />
 
@@ -462,7 +472,7 @@ const Home = () => {
                   strokeMiterlimit="10"
                   x1="135.392"
                   y1="128.327"
-                  x2="148.765"
+                  x2="150.765"
                   y2="141.677"
                 />
 
@@ -474,7 +484,7 @@ const Home = () => {
                   strokeMiterlimit="10"
                   x1="46.234"
                   y1="39.322"
-                  x2="59.607"
+                  x2="61.607"
                   y2="52.673"
                 />
 
