@@ -24,7 +24,7 @@
   
   section {
     height: 100vh;
-    /* border: 1px solid black; */
+    border: 1px solid black;
     position: relative;
   }
   
@@ -35,6 +35,23 @@
   .section-9 {
     background-color: #90c9f7;
     height:300vh;
+  }
+
+  .section-10 {
+    height: 200vh;
+    
+  }
+
+  .section-11 {
+    height: 1000vh;
+  }
+
+  .section-12 {
+    height: 600vh;
+  }
+
+  .section-13 {
+    height: 600vh;
   }
   
   #animated-element {

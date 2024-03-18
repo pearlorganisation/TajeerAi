@@ -99,6 +99,16 @@ const Home = () => {
             transform: "translate(-50%, -50%)",
           });
         },
+        onLeaveBack: () => {
+          // Remove the fixed positioning and centering styles
+          gsap.set("#animated-element", {
+            position: "",
+            top: "",
+            left: "",
+            transform: "",
+            opacity: "0"
+          });
+        },
       },
     });
 
@@ -230,7 +240,7 @@ const Home = () => {
         scrub: true,
         markers: true,
         onLeave: () => {
-          console.log('leaving this timeline')
+      
           setBulbOn(true);
           setThunderAnimation2(false);
           setShowCenterThunder(false);
@@ -241,7 +251,7 @@ const Home = () => {
             transform: "translate(-50%, -50%)",
           });
         },
-        onLeaveBack: () => {
+        onEnterBack: () => {
           setBulbOn(false);
           setThunderAnimation2(true);
           setShowCenterThunder(true);
@@ -261,29 +271,15 @@ const Home = () => {
       opacity: 0,
     });
 
-    gsap.to("#bulb-container", {
-      // duration:1,
-      scrollTrigger: {
-        trigger: "#bulb-container",
+   const tl4 = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".section-11",
         start: "top center",
         end: "bottom center",
         scrub: true,
-        // markers: true,
-        onEnter: () => {},
-        onLeaveBack: () => {
-          setBulbOn(false);
-          setThunderAnimation2(true);
-          setShowCenterThunder(true);
-          gsap.set("#bulb-container", {
-            position: "",
-            top: "",
-            left: "",
-            transform: "",
-          });
-        },
-      },
-      opacity: 1,
-    });
+        markers: true,
+    }
+   })
   });
 
   return (
