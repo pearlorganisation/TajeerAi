@@ -52,19 +52,6 @@
     z-index: 10;
   }
   
-  /* .cloud-absolute {
-    position: absolute;
-    top:0;
-    left:0;
-  }
-  
-  .cloud-fixed {
-    position: fixed;
-    top:50%;
-    left:50%;
-    transform: translateX(-50%) translateY(-50%);
-  } */
-  
   #thunder1 {
     position: absolute;
     bottom:30px;
@@ -207,12 +194,7 @@
     }
   }
   
-  .glow-animation {
-    /* animation: glowBloom 1s infinite; */
-    box-shadow: 0 0 5px 2px #e3ff48;
-    transition: 0.4s ease;
-  }
-  
+
   
   
 

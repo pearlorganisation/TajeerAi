@@ -1,10 +1,23 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./Home.css";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { MotionPathPlugin, ScrollTrigger } from "gsap/all";
+import { useGSAP } from "@gsap/react";
 import Lenis from "@studio-freight/lenis";
 import { Link } from "react-router-dom";
+
+gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
+
+const lenis = new Lenis();
+
+lenis.on("scroll", ScrollTrigger.update);
+
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000);
+});
+
+gsap.ticker.lagSmoothing(0);
+
 
 const Home = () => {
   const [showSideThunder, setShowSideThunder] = useState(false);
@@ -19,19 +32,7 @@ const Home = () => {
   const [mounted, setMounted] = useState(false);
   const cloudRef = useRef(null);
 
-  const lenis = new Lenis();
 
-  // lenis.on("scroll", (e) => {
-  //   console.log(e);
-  // });
-
-  lenis.on("scroll", ScrollTrigger.update);
-
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-  });
-
-  gsap.ticker.lagSmoothing(0);
 
   // useLayoutEffect(() => {
   //   if (mounted) {
@@ -51,7 +52,7 @@ const Home = () => {
   }, []);
 
   useGSAP(() => {
-    gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
+    
     // gsap code here
 
     // timeline 1
@@ -102,7 +103,7 @@ const Home = () => {
     });
 
     tl.to("#animated-element", {
-      duration: 1,
+      // duration: 1,
       ease: "none",
       motionPath: {
         path: "#path1",
@@ -112,7 +113,7 @@ const Home = () => {
     });
 
     gsap.to("#animated-element", {
-      duration:1,
+      // duration:1,
       scrollTrigger: {
         trigger: ".section-5",
         start: "top top",
@@ -193,19 +194,19 @@ const Home = () => {
     });
 
     tl2.to("#cloud", {
-      duration: 1,
+      // duration: 1,
       opacity: 0,
       ease: "none",
     });
 
     tl2.to("#thunder1", {
-      duration: 1,
+      // duration: 1,
       opacity: 1,
       ease: "none",
     });
 
     tl2.to("#thunder2", {
-      duration: 1,
+      // duration: 1,
       scrub: true,
       top: "50%",
       transform: "translate(-50%. -50%)",
@@ -214,7 +215,7 @@ const Home = () => {
     });
 
     tl2.to("#thunder3", {
-      duration: 1,
+      // duration: 1,
       opacity: 0,
       ease: "none",
     });
@@ -228,37 +229,61 @@ const Home = () => {
         end: "center center",
         scrub: true,
         markers: true,
+        onLeave: () => {
+          console.log('leaving this timeline')
+          setBulbOn(true);
+          setThunderAnimation2(false);
+          setShowCenterThunder(false);
+          gsap.set("#bulb-container", {
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          });
+        },
+        onLeaveBack: () => {
+          setBulbOn(false);
+          setThunderAnimation2(true);
+          setShowCenterThunder(true);
+          gsap.set("#bulb-container", {
+            position: "",
+            top: "",
+            left: "",
+            transform: "translate(-50%, -50%)",
+          });
+        },
       },
     });
 
     tl3.to("#thunder2", {
-      duration:1,
+      // duration:1,
       height: "50px",
       opacity: 0,
     });
 
     gsap.to("#bulb-container", {
-      duration:1,
+      // duration:1,
       scrollTrigger: {
         trigger: "#bulb-container",
         start: "top center",
         end: "bottom center",
         scrub: true,
         // markers: true,
-        onEnter: () => {
-          setBulbOn(true);
-          setThunderAnimation2(false)
-          setShowCenterThunder(false)
-        },
+        onEnter: () => {},
         onLeaveBack: () => {
           setBulbOn(false);
-          setThunderAnimation2(true)
-          setShowCenterThunder(true)
+          setThunderAnimation2(true);
+          setShowCenterThunder(true);
+          gsap.set("#bulb-container", {
+            position: "",
+            top: "",
+            left: "",
+            transform: "",
+          });
         },
       },
       opacity: 1,
     });
-    
   });
 
   return (
@@ -329,11 +354,8 @@ const Home = () => {
           {/* scroll down animation */}
           <div className="mouse-container absolute bottom-0">
             <div className="field flex flex-col gap-2 font-semibold">
-              <div className="mouse">
-                
-              </div>
+              <div className="mouse"></div>
               Start Scroll to begin
-              
             </div>
           </div>
         </section>
@@ -354,7 +376,7 @@ const Home = () => {
         <section className="section-9 realtive">
           <div
             id="bulb-container"
-            className="w-fit absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/3"
+            className="w-fit absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/3"
           >
             <svg
               id="bulb-svg"
@@ -440,7 +462,7 @@ const Home = () => {
 
                 {/* More elements for bulb */}
               </g>
-              <g id="licht" style={{ opacity: `${bulbOn ? '1' : '0'}`}}>
+              <g id="licht" style={{ opacity: `${bulbOn ? "1" : "0"}` }}>
                 <line
                   fill="none"
                   stroke="#FFFF00"
