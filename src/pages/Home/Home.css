@@ -24,11 +24,25 @@
   
   section {
     height: 100vh;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     position: relative;
+  }
+
+  .section-1{
+    background-color: #fffaee;
   }
   
   .section-5 {
+    height:300vh;
+  }
+
+  .section-7 {
+    background-color: #b7d5ec;
+    height:300vh;
+  }
+
+  .section-8 {
+    background-color: #93a8b8;
     height:300vh;
   }
   
@@ -38,16 +52,18 @@
   }
 
   .section-10 {
-    height: 200vh;
-    
+    height: 400vh;
+    background-color: #9fafad;
   }
 
   .section-11 {
     height: 1000vh;
+    background-color: #9fa0b6
   }
 
   .section-12 {
     height: 600vh;
+    background-color: #d5d7fd
   }
 
   .section-13 {
