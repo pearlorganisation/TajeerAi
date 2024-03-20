@@ -18,7 +18,6 @@ gsap.ticker.add((time) => {
 
 gsap.ticker.lagSmoothing(0);
 
-
 const Home = () => {
   const [showSideThunder, setShowSideThunder] = useState(false);
   const [showCenterThunder, setShowCenterThunder] = useState(false);
@@ -31,8 +30,6 @@ const Home = () => {
 
   const [mounted, setMounted] = useState(false);
   const cloudRef = useRef(null);
-
-
 
   // useLayoutEffect(() => {
   //   if (mounted) {
@@ -52,7 +49,6 @@ const Home = () => {
   }, []);
 
   useGSAP(() => {
-    
     // gsap code here
 
     // timeline 1
@@ -106,7 +102,7 @@ const Home = () => {
             top: "",
             left: "",
             transform: "",
-            opacity: "0"
+            opacity: "0",
           });
         },
       },
@@ -240,7 +236,6 @@ const Home = () => {
         scrub: true,
         // markers: true,
         onLeave: () => {
-      
           setBulbOn(true);
           setThunderAnimation2(false);
           setShowCenterThunder(false);
@@ -271,22 +266,56 @@ const Home = () => {
       opacity: 0,
     });
 
-   const tl4 = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".section-11",
+    const tl4 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".section-11",
         start: "top center",
-        end: "bottom center",
+        end: "15% center",
         scrub: true,
-        // markers: true,
-    }
-   })
+        markers: true,
+
+        onEnter: () => {
+          gsap.set("#bulb-container", {
+            opacity: 0,
+          });
+          gsap.set("#logo-container", {
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            display: "block",
+          })
+          gsap.set("#tajerLogo", {
+            opacity: 1,
+            
+          })
+        },
+        onLeaveBack: () => {
+          gsap.set("#bulb-container", {
+            opacity: 1,
+          });
+          gsap.set("#logo-container", {
+            position: "",
+            top: "",
+            left: "",
+            transform: "",
+            display: "none",
+          })
+          gsap.set("#tajerLogo", {
+            opacity: 1,
+            
+          })
+        },
+      },
+    });
+
   });
 
   return (
     <>
       {/* navbar */}
-      <nav className="py-4 px-8 shadow flex justify-between z-[9999]">
-        <div className="text-2xl font-bold">Tajer</div>
+      <nav className="py-4 px-8 flex justify-between z-[9999] bg-orange-600 text-white shadow-lg">
+        <div className="text-2xl  font-bold">Tajer</div>
         <div className="flex flex-col justify-center">
           <div className="flex gap-2">
             <Link to="/signin">
@@ -307,27 +336,27 @@ const Home = () => {
           {/* animated elements */}
           <div id="animated-element" className="">
             <img
-              src="src/assets/Cloud.png"
+              src="/Cloud.png"
               alt="Cloud"
               id="cloud"
               ref={cloudRef}
             />
             <img
-              src="src/assets/thunder1.png"
+              src="/thunder1.png"
               id="thunder1"
               className={`${showSideThunder ? "" : "hidden"} ${
                 thunderAnimation1 ? "thunder-animation1" : ""
               }`}
             />
             <img
-              src="src/assets/thunder2.png"
+              src="/thunder2.png"
               id="thunder2"
               className={`${showCenterThunder ? "" : "hidden"} ${
                 thunderAnimation2 ? "thunder-animation2" : ""
               }`}
             />
             <img
-              src="src/assets/thunder3.png"
+              src="/thunder3.png"
               id="thunder3"
               className={`${showSideThunder ? "" : "hidden"} ${
                 thunderAnimation3 ? "thunder-animation3" : ""
@@ -372,7 +401,7 @@ const Home = () => {
         <section className="section-9 realtive">
           <div
             id="bulb-container"
-            className="w-fit absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/3"
+            className="w-fit absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/3 z-[3] tranisiton duration-300"
           >
             <svg
               id="bulb-svg"
@@ -559,7 +588,19 @@ const Home = () => {
           </div>
         </section>
         <section className="section-10"></section>
-        <section className="section-11"></section>
+        <section className="section-11 relative">
+          <div id="logo-container" className="w-fit absolute left-[50%] -translate-x-1/2">
+            <img
+              src="/logo-light.png"
+              id="tajerLogo"
+              style={{width: "200px", opacity: "0"}}
+              className="transition duration-700"
+              // className={`${showSideThunder ? "" : "hidden"} ${
+              //   thunderAnimation3 ? "thunder-animation3" : ""
+              // }`}
+            />
+          </div>
+        </section>
         <section className="section-12"></section>
       </div>
     </>
