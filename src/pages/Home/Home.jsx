@@ -166,7 +166,7 @@ const Home = () => {
         start: "center top",
         end: "bottom center",
         scrub: true,
-        markers: true,
+        // markers: true,
         onEnter: () => {
           setShowBulb(true)
           
@@ -248,7 +248,7 @@ const Home = () => {
         start: "top center",
         end: "center center",
         scrub: true,
-        markers: true,
+        // markers: true,
         onLeave: () => {
           setBulbOn(true);
           section9ref.current.style.backgroundColor = "#fb9e44d1"
