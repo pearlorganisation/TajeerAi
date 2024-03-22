@@ -26,6 +26,7 @@ const Home = () => {
   const [thunderAnimation2, setThunderAnimation2] = useState(false);
   const [thunderAnimation3, setThunderAnimation3] = useState(false);
   const [bulbOn, setBulbOn] = useState(false);
+  const [showBulb, setShowBulb] = useState(false);
   const [showLogoAnimation, setShowLogoAnimation] = useState(false);
   const [shouldScroll, setShouldScroll] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -33,6 +34,12 @@ const Home = () => {
   
   // refs
   const cloudRef = useRef(null);
+  const section5ref = useRef()
+  const section6ref = useRef()
+  const section7ref = useRef()
+  const section8ref = useRef()
+  const section9ref = useRef()
+
   const section11ref = useRef()
 
   useLayoutEffect(() => {
@@ -119,6 +126,9 @@ const Home = () => {
         scrub: true,
         // markers: true,
         onEnter: () => {
+          section5ref.current.style.backgroundColor = "#747d89"
+          
+
           setShowSideThunder(true);
           setShowCenterThunder(true);
           setThunderAnimation1(true);
@@ -140,6 +150,8 @@ const Home = () => {
           setThunderAnimation3(false);
         },
         onLeaveBack: () => {
+          section5ref.current.style.backgroundColor = "#d1fae5"
+
           setShowSideThunder(false);
           setShowCenterThunder(false);
           setThunderAnimation1(false);
@@ -158,6 +170,7 @@ const Home = () => {
         scrub: true,
         // markers: true,
         onEnter: () => {
+          setShowBulb(true)
           setThunderAnimation1(false);
           setThunderAnimation3(false);
           gsap.set("#thunder2", {
@@ -229,6 +242,7 @@ const Home = () => {
         // markers: true,
         onLeave: () => {
           setBulbOn(true);
+          section9ref.current.style.backgroundColor = "#fb9e44d1"
           setThunderAnimation2(false);
           setShowCenterThunder(false);
           gsap.set("#bulb-container", {
@@ -239,6 +253,7 @@ const Home = () => {
           });
         },
         onEnterBack: () => {
+          section9ref.current.style.backgroundColor = "#3a3d42"
           setBulbOn(false);
           setThunderAnimation2(true);
           setShowCenterThunder(true);
@@ -262,11 +277,12 @@ const Home = () => {
       scrollTrigger: {
         trigger: ".section-11",
         start: "top center",
-        end: "15% center",
+        end: "center center",
         scrub: true,
-        markers: true,
+        // markers: true,
 
         onEnter: () => {
+          setShowBulb(false)
           gsap.set("#bulb-container", {
             opacity: 0,
           });
@@ -284,6 +300,7 @@ const Home = () => {
           setShowLogoAnimation(true)
         },
         onLeaveBack: () => {
+          setShowBulb(true)
           gsap.set("#bulb-container", {
             opacity: 1,
           });
@@ -298,10 +315,40 @@ const Home = () => {
             opacity: 1,
           })
           setShowLogoAnimation(false)
-          section11ref.current.style.backgroundColor = '#9fa0b6';
+          section11ref.current.style.backgroundColor = '#a74c4c';
         },
       },
     });
+
+    tl4.to("#feature1",{
+      duration:10,
+      opacity:1,
+      left: "-100%",
+      top: "-20%"
+  }, 'features')
+
+
+
+  tl4.to("#feature2",{
+    duration:8,
+    opacity:1,
+    left: "200%",
+    top: "105%"
+}, 'features')
+
+tl4.to("#feature3",{
+  duration:10,
+  opacity:1,
+  left: "200%",
+  top: "-10%"
+}, 'features')
+
+tl4.to("#feature4",{
+  duration:11,
+  opacity:1,
+  left: "-100%",
+  top: "110%"
+}, 'features')
 
 
   });
@@ -310,7 +357,7 @@ const Home = () => {
 // smash animation end for tajer logo
   const onAnimationEnd = () => {
     // Change the color of the parent div when the animation ends
-    section11ref.current.style.backgroundColor = '#8386ad'; // Change this to the desired color
+    section11ref.current.style.backgroundColor = '#8a3d3d'; // Change this to the desired color
   };
 
   return (
@@ -396,14 +443,14 @@ const Home = () => {
         </section>
         <section className="section-3  bg-blue-100"></section>
         <section className="section-4 bg-emerald-200"></section>
-        <section className="section-5 bg-green-100"></section>
-        <section className="section-6 bg-emerald-200"></section>
-        <section className="section-7"></section>
-        <section className="section-8"></section>
-        <section className="section-9 realtive">
+        <section className="section-5  transition duration-500 " ref={section5ref}></section>
+        <section className="section-6 transition duration-300  bg-[#798089]" ref={section6ref}></section>
+        <section className="section-7 transition duration-300 bg-[#686f78] " ref={section7ref } ></section>
+        <section className="section-8 transition duration-300 bg-[#4e535a]" ref={section8ref}></section>
+        <section className="section-9 realtive transition duration-300 " ref={section9ref}>
           <div
             id="bulb-container"
-            className="w-fit absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/3 z-[3] tranisiton duration-300"
+            className={`${showBulb ? "": "hidden"} w-fit absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/3 z-[3] tranisiton duration-300`}
           >
             <svg
               id="bulb-svg"
@@ -595,16 +642,45 @@ const Home = () => {
             <img
               src="/logo-light.png"
               id="tajerLogo"
-              style={{width: "200px", opacity: "0"}}
-              className={`transition duration-700 ${showLogoAnimation ? "logoAnimation" : ""}`}
+              style={{width: "200px", opacity: "0", zIndex: "10" }}
+              className={`relative transition duration-700  ${showLogoAnimation ? "logoAnimation" : ""}`}
               onAnimationEnd={onAnimationEnd}
               // className={`${showSideThunder ? "" : "hidden"} ${
               //   thunderAnimation3 ? "thunder-animation3" : ""
               // }`}
             />
+            <div 
+              id="feature1"
+              className="absolute  text-4xl text-black bg-white p-3 rounded-md w-[200px] text-center cursor-pointer hover:bg-purple-500 hover:text-white hover:shadow-md transition duration-300"
+              style={{opacity: "0", top: "50%", left: "50%", transform: "translate(-50% ,-50%)",zIndex: "5" }}
+            >
+              feature 1
+            </div>
+            <div 
+              id="feature2"
+              className="absolute text-4xl text-black bg-white p-3 rounded-md w-[200px] text-center cursor-pointer hover:bg-purple-500 hover:text-white hover:shadow-md transition duration-300 "
+              style={{opacity: "0", top: "50%", left: "50%", transform: "translate(-50% ,-50%)",zIndex: "5"}}
+            >
+              feature 2
+            </div>
+            <div 
+              id="feature3"
+              className="absolute text-4xl text-black bg-white p-3 rounded-md w-[200px] text-center cursor-pointer hover:bg-purple-500 hover:text-white hover:shadow-md transition duration-300"
+              style={{opacity: "0", top: "50%", left: "50%", transform: "translate(-50% ,-50%)",zIndex: "5" }}
+            >
+              feature 3
+            </div>
+            <div 
+              id="feature4"
+              className="absolute text-4xl text-black bg-white p-3 rounded-md w-[200px] text-center cursor-pointer hover:bg-purple-500 hover:text-white hover:shadow-md transition duration-300"
+              style={{opacity: "0", top: "50%", left: "50%", transform: "translate(-50% ,-50%)",zIndex: "5" }}
+            >
+              feature 4
+            </div>
+
           </div>
         </section>
-        <section className="section-12"></section>
+        {/* <section className="section-12"></section> */}
       </div>
     </>
   );
