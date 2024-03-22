@@ -19,23 +19,21 @@ gsap.ticker.add((time) => {
 gsap.ticker.lagSmoothing(0);
 
 const Home = () => {
+  // states
   const [showSideThunder, setShowSideThunder] = useState(false);
   const [showCenterThunder, setShowCenterThunder] = useState(false);
   const [thunderAnimation1, setThunderAnimation1] = useState(false);
   const [thunderAnimation2, setThunderAnimation2] = useState(false);
   const [thunderAnimation3, setThunderAnimation3] = useState(false);
   const [bulbOn, setBulbOn] = useState(false);
-
+  const [showLogoAnimation, setShowLogoAnimation] = useState(false);
   const [shouldScroll, setShouldScroll] = useState(false);
-
   const [mounted, setMounted] = useState(false);
+  
+  
+  // refs
   const cloudRef = useRef(null);
-
-  // useLayoutEffect(() => {
-  //   if (mounted) {
-  //     cloudRef.current.scrollIntoView({ behavior: "smooth" });
-  //   }
-  // }, [mounted]);
+  const section11ref = useRef()
 
   useLayoutEffect(() => {
     if (mounted && shouldScroll) {
@@ -48,24 +46,18 @@ const Home = () => {
     setMounted(true);
   }, []);
 
-  useGSAP(() => {
-    // gsap code here
+  
+  // gsap code here
 
+  useGSAP(() => {
     // timeline 1
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: "#path1",
         start: "top top",
         end: "bottom center",
-        // end: '+=' + ((window.innerHeight * 3) + 50),
         scrub: true,
         // markers: true,
-        // onEnter: () => {
-        //   setAbsolute(true)
-        // },
-        // onEnterBack: () => {
-        //   setAbsolute(true)
-        // },
 
         onEnter: () => {
           // Remove the fixed positioning and centering styles
@@ -287,8 +279,9 @@ const Home = () => {
           })
           gsap.set("#tajerLogo", {
             opacity: 1,
-            
           })
+
+          setShowLogoAnimation(true)
         },
         onLeaveBack: () => {
           gsap.set("#bulb-container", {
@@ -303,13 +296,22 @@ const Home = () => {
           })
           gsap.set("#tajerLogo", {
             opacity: 1,
-            
           })
+          setShowLogoAnimation(false)
+          section11ref.current.style.backgroundColor = '#9fa0b6';
         },
       },
     });
 
+
   });
+
+  
+// smash animation end for tajer logo
+  const onAnimationEnd = () => {
+    // Change the color of the parent div when the animation ends
+    section11ref.current.style.backgroundColor = '#8386ad'; // Change this to the desired color
+  };
 
   return (
     <>
@@ -588,13 +590,14 @@ const Home = () => {
           </div>
         </section>
         <section className="section-10"></section>
-        <section className="section-11 relative">
+        <section className="section-11 relative" ref={section11ref}>
           <div id="logo-container" className="w-fit absolute left-[50%] -translate-x-1/2">
             <img
               src="/logo-light.png"
               id="tajerLogo"
               style={{width: "200px", opacity: "0"}}
-              className="transition duration-700"
+              className={`transition duration-700 ${showLogoAnimation ? "logoAnimation" : ""}`}
+              onAnimationEnd={onAnimationEnd}
               // className={`${showSideThunder ? "" : "hidden"} ${
               //   thunderAnimation3 ? "thunder-animation3" : ""
               // }`}
