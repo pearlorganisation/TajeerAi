@@ -24,6 +24,7 @@ const Home = () => {
   const [showCenterThunder, setShowCenterThunder] = useState(false);
   const [thunderAnimation1, setThunderAnimation1] = useState(false);
   const [thunderAnimation2, setThunderAnimation2] = useState(false);
+  const [thunderAnimation2Shake, setThunderAnimation2Shake] = useState(false);
   const [thunderAnimation3, setThunderAnimation3] = useState(false);
   const [bulbOn, setBulbOn] = useState(false);
   const [showBulb, setShowBulb] = useState(false);
@@ -127,8 +128,6 @@ const Home = () => {
         // markers: true,
         onEnter: () => {
           section5ref.current.style.backgroundColor = "#747d89"
-          
-
           setShowSideThunder(true);
           setShowCenterThunder(true);
           setThunderAnimation1(true);
@@ -146,12 +145,11 @@ const Home = () => {
           setShowSideThunder(false);
           // setShowCenterThunder(false)
           setThunderAnimation1(false);
-          // setThunderAnimation2(false)
+          // setThunderAnimation2(false);
           setThunderAnimation3(false);
         },
         onLeaveBack: () => {
           section5ref.current.style.backgroundColor = "#d1fae5"
-
           setShowSideThunder(false);
           setShowCenterThunder(false);
           setThunderAnimation1(false);
@@ -168,11 +166,10 @@ const Home = () => {
         start: "center top",
         end: "bottom center",
         scrub: true,
-        // markers: true,
+        markers: true,
         onEnter: () => {
           setShowBulb(true)
-          setThunderAnimation1(false);
-          setThunderAnimation3(false);
+          
           gsap.set("#thunder2", {
             position: "",
             top: "",
@@ -182,6 +179,9 @@ const Home = () => {
           });
         },
         onEnterBack: () => {
+          console.log('enter back')
+          setThunderAnimation2(true);
+          setThunderAnimation2Shake(false);
           gsap.set("#thunder2", {
             position: "",
             top: "",
@@ -191,7 +191,11 @@ const Home = () => {
           });
         },
         onLeave: () => {
-          setShowCenterThunder(true);
+          // setShowCenterThunder(true);
+          // setThunderAnimation1(false);
+          setThunderAnimation2(false);
+          setThunderAnimation2Shake(true);
+          // setThunderAnimation3(false);
           // setThunderAnimation2(false);
           gsap.set("#thunder2", {
             position: "fixed",
@@ -201,6 +205,11 @@ const Home = () => {
             opacity: "1",
           });
         },
+        // onLeaveBack: () => {
+          
+        //   setThunderAnimation2(true);
+        //   setThunderAnimation2Shake(false);
+        // }
       },
     });
 
@@ -219,8 +228,8 @@ const Home = () => {
     tl2.to("#thunder2", {
       // duration: 1,
       scrub: true,
-      top: "50%",
-      transform: "translate(-50%. -50%)",
+      // top: "50%",
+      // transform: "translate(-50%. -50%)",
       height: "150px",
       ease: "none",
     });
@@ -239,12 +248,13 @@ const Home = () => {
         start: "top center",
         end: "center center",
         scrub: true,
-        // markers: true,
+        markers: true,
         onLeave: () => {
           setBulbOn(true);
           section9ref.current.style.backgroundColor = "#fb9e44d1"
-          setThunderAnimation2(false);
+          // setThunderAnimation2(false);
           setShowCenterThunder(false);
+          setThunderAnimation2Shake(false);
           gsap.set("#bulb-container", {
             position: "fixed",
             top: "50%",
@@ -255,8 +265,9 @@ const Home = () => {
         onEnterBack: () => {
           section9ref.current.style.backgroundColor = "#3a3d42"
           setBulbOn(false);
-          setThunderAnimation2(true);
+          // setThunderAnimation2(true);
           setShowCenterThunder(true);
+          setThunderAnimation2Shake(true);
           gsap.set("#bulb-container", {
             position: "",
             top: "",
@@ -400,8 +411,10 @@ tl4.to("#feature4",{
             <img
               src="/thunder2.png"
               id="thunder2"
-              className={`${showCenterThunder ? "" : "hidden"} ${
+              className={`transition duration-100 ${showCenterThunder ? "" : "hidden"} ${
                 thunderAnimation2 ? "thunder-animation2" : ""
+              } ${
+                thunderAnimation2Shake ? "thunder-animation2-shake" : ""
               }`}
             />
             <img
