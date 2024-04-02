@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-dvh w-full px-8 text-gray-50 flex flex-col gap-8 md:gap-14 md:pt-4">
-      <div className="w-full text-center text-4xl font-semibold">
+      <div className="w-full text-center text-2xl md:text-4xl font-semibold">
         <p>Greetings!</p>
         <p>Abhishek Bahuguna</p>
       </div>
@@ -27,7 +27,7 @@ const Dashboard = () => {
               class={`${style.card2} group overflow-hidden  px-6 py-4 rounded-md cursor-pointer w-full md:w-[49%] h-[300px] shadow-lg shadow-[#19142c]`}
             >
               <p
-                className="text-3xl md:text-4xl lg:text-5xl text-wrap font-extrabold"
+                className="text-5xl text-wrap font-extrabold"
                 style={{ wordSpacing: "100vw", lineHeight: "60px" }}
               >
                 {" "}
