@@ -1,20 +1,50 @@
-.card {
-  background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
-  border-radius: 15px;
+:root {
+  --gray-border: rgb(173, 170, 170);
+  --gradient-1: #070c25;
+  --gradient-2: #060b22;
+  --gradient-3: #040a1e;
+
+
+}
+
+.gradientBg {
+  background: linear-gradient(128deg, var(--gradient-1) 0%, var(--gradient-2) 67%, var(--gradient-3) 99%);
+}
+
+/* .card {
+  background-color: white;
+  border-radius: 8px;
   transition: all 0.3s;
 }
 
+.card:hover  {
+  transform: scale(1.006)
+} */
+
+
+/* .cardGradient1 {
+  background: linear-gradient(145deg, rgba(20,25,44,1) 0%, rgba(33,38,55,1) 59%, rgba(1,73,88,1) 100%);
+}
+
+.cardGradient2 {
+  background: linear-gradient(145deg, rgba(20,25,44,1) 0%, rgba(33,38,55,1) 59%, rgba(1,73,88,1) 100%);
+} */
+
 .card2 {
-  background-color: #1a1a1a;
-
-  transition: all 0.2s;
+  /* border-radius: 8px; */
+  background: #14192c;
+  /* background: linear-gradient(145deg, #14192c 0%, #14192c 38%, #14192c 65%, #14192c 100%); */
+  border: solid var(--gray-border);
+  border-width: thin;
+  transition: all 0.3s;
 }
 
-.card2:hover {
-  border-radius: 15px;
+.card2:hover{
+  background: linear-gradient(145deg, rgba(20,25,44,1) 0%, rgba(33,38,55,1) 38%, rgba(17,40,56,1) 65%, rgba(1,73,88,1) 100%);
+  transform: scale(1.005);
 }
-
+/* 
 .card:hover {
   padding: 1px;
   box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.3);
-}
+} */
