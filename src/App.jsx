@@ -8,11 +8,13 @@ import Home from "./pages/Home/Home";
 import Signin from "./pages/Signin/Signin";
 import Signup from "./pages/Signup/Signup";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import Header from "./components/Header/Header";
 
 function App() {
 
   return (
-    <>
+    <div className="bg-gray-900">
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<Signin />} />
@@ -20,7 +22,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
 
-    </>
+    </div>
   );
 }
 
