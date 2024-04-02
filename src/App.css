@@ -1,3 +1,14 @@
+:root {
+  --gradient-1: #070c25;
+  --gradient-2: #060b22;
+  --gradient-3: #040a1e;
+}
+
+.gradientBg {
+  background: linear-gradient(128deg, var(--gradient-1) 0%, var(--gradient-2) 67%, var(--gradient-3) 99%);
+}
+
+
 .cloud-container {
   width: 100%;
   height: 400vh;

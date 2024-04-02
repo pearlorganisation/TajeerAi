@@ -1,6 +1,6 @@
 
 import { Route, Routes } from "react-router-dom";
-
+import "./App.css";
 // import CloudAnimation from "./components/CloudAnimation";
 // import JaiCloudAnimation from "./components/JaiCloudAnimation";
 
@@ -13,7 +13,7 @@ import Header from "./components/Header/Header";
 function App() {
 
   return (
-    <div className="bg-gray-900">
+    <div className="gradientBg w-full">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

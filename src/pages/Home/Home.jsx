@@ -373,24 +373,6 @@ tl4.to("#feature4",{
 
   return (
     <>
-      {/* navbar */}
-      <nav className="py-4 px-8 flex justify-between z-[9999] bg-orange-600 text-white shadow-lg">
-        <div className="text-2xl  font-bold">Tajer</div>
-        <div className="flex flex-col justify-center">
-          <div className="flex gap-2">
-            <Link to="/signin">
-              <span className="text-white font-semibold shadow-md bg-blue-500 hover:bg-blue-700 py-1 px-3 rounded hover:underline transition duration-300">
-                Sign-In
-              </span>
-            </Link>
-            <Link to="/signup">
-              <span className="text-black font-semibold shadow-md bg-emerald-400 hover:bg-emerald-500  py-1 px-3 rounded hover:underline transition duration-300">
-                Sign-Up
-              </span>
-            </Link>
-          </div>
-        </div>
-      </nav>
       <div id="track">
         <section className="section-1">
           {/* animated elements */}

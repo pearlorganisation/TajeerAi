@@ -13,10 +13,10 @@ const Header = () => {
     ]
 
     return (
-        <nav className=" font-medium  border-white/70 border-b text-white w-full  md:static">
+        <nav className=" font-base text-white w-full md:static bg-transparent">
             <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
-                <div className="flex items-center justify-between py-3 md:py-5 md:block">
-                    <a href="javascript:void(0)">
+                <div className="flex items-center justify-between py-4 md:py-5 md:block w-full">
+                    <a href="#" className='font-semibold text-2xl'>
                         Tajer Ai
                     </a>
                     <div className="md:hidden">
@@ -37,7 +37,7 @@ const Header = () => {
                         </button>
                     </div>
                 </div>
-                <div className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${state ? 'block' : 'hidden'}`}>
+                {/* <div className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${state ? 'block' : 'hidden'}`}>
                     <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
                         {
                             navigation.map((item, idx) => {
@@ -51,9 +51,9 @@ const Header = () => {
                             })
                         }
                     </ul>
-                </div>
+                </div> */}
                 <div className="hidden md:inline-block">
-                    <a href="javascript:void(0)" className="py-3 px-4 text-white bg-gray-600 hover:bg-gray-700 rounded-md shadow">
+                    <a href="javascript:void(0)" className="py-3 px-4 text-white bg-gray-600 hover:bg-gray-700 rounded-md shadow  transition duration-300">
                         Logout
                     </a>
                 </div>
