@@ -31,17 +31,16 @@ const Home = () => {
   const [showLogoAnimation, setShowLogoAnimation] = useState(false);
   const [shouldScroll, setShouldScroll] = useState(false);
   const [mounted, setMounted] = useState(false);
-  
-  
+
   // refs
   const cloudRef = useRef(null);
-  const section5ref = useRef()
-  const section6ref = useRef()
-  const section7ref = useRef()
-  const section8ref = useRef()
-  const section9ref = useRef()
+  const section5ref = useRef();
+  const section6ref = useRef();
+  const section7ref = useRef();
+  const section8ref = useRef();
+  const section9ref = useRef();
 
-  const section11ref = useRef()
+  const section11ref = useRef();
 
   useLayoutEffect(() => {
     if (mounted && shouldScroll) {
@@ -54,7 +53,6 @@ const Home = () => {
     setMounted(true);
   }, []);
 
-  
   // gsap code here
 
   useGSAP(() => {
@@ -127,7 +125,7 @@ const Home = () => {
         scrub: true,
         // markers: true,
         onEnter: () => {
-          section5ref.current.style.backgroundColor = "#747d89"
+          section5ref.current.style.backgroundColor = "#747d89";
           setShowSideThunder(true);
           setShowCenterThunder(true);
           setThunderAnimation1(true);
@@ -149,7 +147,7 @@ const Home = () => {
           setThunderAnimation3(false);
         },
         onLeaveBack: () => {
-          section5ref.current.style.backgroundColor = "#d1fae5"
+          section5ref.current.style.backgroundColor = "#d1fae5";
           setShowSideThunder(false);
           setShowCenterThunder(false);
           setThunderAnimation1(false);
@@ -168,8 +166,8 @@ const Home = () => {
         scrub: true,
         // markers: true,
         onEnter: () => {
-          setShowBulb(true)
-          
+          setShowBulb(true);
+
           gsap.set("#thunder2", {
             position: "",
             top: "",
@@ -179,7 +177,7 @@ const Home = () => {
           });
         },
         onEnterBack: () => {
-          console.log('enter back')
+          console.log("enter back");
           setThunderAnimation2(true);
           setThunderAnimation2Shake(false);
           gsap.set("#thunder2", {
@@ -206,7 +204,7 @@ const Home = () => {
           });
         },
         // onLeaveBack: () => {
-          
+
         //   setThunderAnimation2(true);
         //   setThunderAnimation2Shake(false);
         // }
@@ -251,7 +249,7 @@ const Home = () => {
         // markers: true,
         onLeave: () => {
           setBulbOn(true);
-          section9ref.current.style.backgroundColor = "#fb9e44d1"
+          section9ref.current.style.backgroundColor = "#fb9e44d1";
           // setThunderAnimation2(false);
           setShowCenterThunder(false);
           setThunderAnimation2Shake(false);
@@ -263,7 +261,7 @@ const Home = () => {
           });
         },
         onEnterBack: () => {
-          section9ref.current.style.backgroundColor = "#3a3d42"
+          section9ref.current.style.backgroundColor = "#3a3d42";
           setBulbOn(false);
           // setThunderAnimation2(true);
           setShowCenterThunder(true);
@@ -293,7 +291,7 @@ const Home = () => {
         // markers: true,
 
         onEnter: () => {
-          setShowBulb(false)
+          setShowBulb(false);
           gsap.set("#bulb-container", {
             opacity: 0,
           });
@@ -303,15 +301,15 @@ const Home = () => {
             left: "50%",
             transform: "translate(-50%, -50%)",
             display: "block",
-          })
+          });
           gsap.set("#tajerLogo", {
             opacity: 1,
-          })
+          });
 
-          setShowLogoAnimation(true)
+          setShowLogoAnimation(true);
         },
         onLeaveBack: () => {
-          setShowBulb(true)
+          setShowBulb(true);
           gsap.set("#bulb-container", {
             opacity: 1,
           });
@@ -321,54 +319,65 @@ const Home = () => {
             left: "",
             transform: "",
             display: "none",
-          })
+          });
           gsap.set("#tajerLogo", {
             opacity: 1,
-          })
-          setShowLogoAnimation(false)
-          section11ref.current.style.backgroundColor = '#a74c4c';
+          });
+          setShowLogoAnimation(false);
+          section11ref.current.style.backgroundColor = "#a74c4c";
         },
       },
     });
 
-    tl4.to("#feature1",{
-      duration:10,
-      opacity:1,
-      left: "-100%",
-      top: "-20%"
-  }, 'features')
+    tl4.to(
+      "#feature1",
+      {
+        duration: 10,
+        opacity: 1,
+        left: "-100%",
+        top: "-20%",
+      },
+      "features"
+    );
 
+    tl4.to(
+      "#feature2",
+      {
+        duration: 8,
+        opacity: 1,
+        left: "200%",
+        top: "105%",
+      },
+      "features"
+    );
 
+    tl4.to(
+      "#feature3",
+      {
+        duration: 10,
+        opacity: 1,
+        left: "200%",
+        top: "-10%",
+      },
+      "features"
+    );
 
-  tl4.to("#feature2",{
-    duration:8,
-    opacity:1,
-    left: "200%",
-    top: "105%"
-}, 'features')
-
-tl4.to("#feature3",{
-  duration:10,
-  opacity:1,
-  left: "200%",
-  top: "-10%"
-}, 'features')
-
-tl4.to("#feature4",{
-  duration:11,
-  opacity:1,
-  left: "-100%",
-  top: "110%"
-}, 'features')
-
-
+    tl4.to(
+      "#feature4",
+      {
+        duration: 11,
+        opacity: 1,
+        left: "-100%",
+        top: "110%",
+      },
+      "features"
+    );
   });
 
-  
-// smash animation end for tajer logo
+  // smash animation end for tajer logo
   const onAnimationEnd = () => {
     // Change the color of the parent div when the animation ends
-    section11ref.current.style.backgroundColor = '#8a3d3d'; // Change this to the desired color
+    section11ref.current.style.backgroundColor = "#8a3d3d"; // Change this to the desired color
   };
 
   return (
@@ -377,12 +386,7 @@ tl4.to("#feature4",{
         <section className="section-1">
           {/* animated elements */}
           <div id="animated-element" className="">
-            <img
-              src="/Cloud.png"
-              alt="Cloud"
-              id="cloud"
-              ref={cloudRef}
-            />
+            <img src="/Cloud.png" alt="Cloud" id="cloud" ref={cloudRef} />
             <img
               src="/thunder1.png"
               id="thunder1"
@@ -393,9 +397,9 @@ tl4.to("#feature4",{
             <img
               src="/thunder2.png"
               id="thunder2"
-              className={`transition duration-100 ${showCenterThunder ? "" : "hidden"} ${
-                thunderAnimation2 ? "thunder-animation2" : ""
-              } ${
+              className={`transition duration-100 ${
+                showCenterThunder ? "" : "hidden"
+              } ${thunderAnimation2 ? "thunder-animation2" : ""} ${
                 thunderAnimation2Shake ? "thunder-animation2-shake" : ""
               }`}
             />
@@ -429,23 +433,40 @@ tl4.to("#feature4",{
           </div>
         </section>
         <section className="section-2 bg-gray-100 text-center">
-          <div
-            className="text-4xl md:text-9xl font-semibold w-full relative"
-            style={{ zIndex: "99999" }}
-          >
-            Tajer AI
+          <div class="card w-[600px] h-[300px] flex flex-col justify-evenly  text-center absolute top-1/2 left-1/2 z-[999] -translate-x-1/2 -translate-y-1/2">
+            <p className="text-7xl font-semibold">Hey partner!</p>
+            <p className="text-6xl font-semibold inline-block text-transparent bg-clip-text gradient-text">
+              Welcome to Tajer AI
+            </p>
           </div>
         </section>
         <section className="section-3  bg-blue-100"></section>
         <section className="section-4 bg-emerald-200"></section>
-        <section className="section-5  transition duration-500 " ref={section5ref}></section>
-        <section className="section-6 transition duration-300  bg-[#798089]" ref={section6ref}></section>
-        <section className="section-7 transition duration-300 bg-[#686f78] " ref={section7ref } ></section>
-        <section className="section-8 transition duration-300 bg-[#4e535a]" ref={section8ref}></section>
-        <section className="section-9 realtive transition duration-300 " ref={section9ref}>
+        <section
+          className="section-5  transition duration-500 "
+          ref={section5ref}
+        ></section>
+        <section
+          className="section-6 transition duration-300  bg-[#798089]"
+          ref={section6ref}
+        ></section>
+        <section
+          className="section-7 transition duration-300 bg-[#686f78] "
+          ref={section7ref}
+        ></section>
+        <section
+          className="section-8 transition duration-300 bg-[#4e535a]"
+          ref={section8ref}
+        ></section>
+        <section
+          className="section-9 realtive transition duration-300 "
+          ref={section9ref}
+        >
           <div
             id="bulb-container"
-            className={`${showBulb ? "": "hidden"} w-fit absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/3 z-[3] tranisiton duration-300`}
+            className={`${
+              showBulb ? "" : "hidden"
+            } w-fit absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/3 z-[3] tranisiton duration-300`}
           >
             <svg
               id="bulb-svg"
@@ -633,46 +654,74 @@ tl4.to("#feature4",{
         </section>
         <section className="section-10"></section>
         <section className="section-11 relative" ref={section11ref}>
-          <div id="logo-container" className="w-fit absolute left-[50%] -translate-x-1/2">
+          <div
+            id="logo-container"
+            className="w-fit absolute left-[50%] -translate-x-1/2"
+          >
             <img
               src="/logo-light.png"
               id="tajerLogo"
-              style={{width: "200px", opacity: "0", zIndex: "10" }}
-              className={`relative transition duration-700  ${showLogoAnimation ? "logoAnimation" : ""}`}
+              style={{ width: "200px", opacity: "0", zIndex: "10" }}
+              className={`relative transition duration-700  ${
+                showLogoAnimation ? "logoAnimation" : ""
+              }`}
               onAnimationEnd={onAnimationEnd}
               // className={`${showSideThunder ? "" : "hidden"} ${
               //   thunderAnimation3 ? "thunder-animation3" : ""
               // }`}
             />
-            <div 
+            <div
               id="feature1"
               className="absolute  text-4xl text-black bg-white p-3 rounded-md w-[200px] text-center cursor-pointer hover:bg-purple-500 hover:text-white hover:shadow-md transition duration-300"
-              style={{opacity: "0", top: "50%", left: "50%", transform: "translate(-50% ,-50%)",zIndex: "5" }}
+              style={{
+                opacity: "0",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50% ,-50%)",
+                zIndex: "5",
+              }}
             >
               feature 1
             </div>
-            <div 
+            <div
               id="feature2"
               className="absolute text-4xl text-black bg-white p-3 rounded-md w-[200px] text-center cursor-pointer hover:bg-purple-500 hover:text-white hover:shadow-md transition duration-300 "
-              style={{opacity: "0", top: "50%", left: "50%", transform: "translate(-50% ,-50%)",zIndex: "5"}}
+              style={{
+                opacity: "0",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50% ,-50%)",
+                zIndex: "5",
+              }}
             >
               feature 2
             </div>
-            <div 
+            <div
               id="feature3"
               className="absolute text-4xl text-black bg-white p-3 rounded-md w-[200px] text-center cursor-pointer hover:bg-purple-500 hover:text-white hover:shadow-md transition duration-300"
-              style={{opacity: "0", top: "50%", left: "50%", transform: "translate(-50% ,-50%)",zIndex: "5" }}
+              style={{
+                opacity: "0",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50% ,-50%)",
+                zIndex: "5",
+              }}
             >
               feature 3
             </div>
-            <div 
+            <div
               id="feature4"
               className="absolute text-4xl text-black bg-white p-3 rounded-md w-[200px] text-center cursor-pointer hover:bg-purple-500 hover:text-white hover:shadow-md transition duration-300"
-              style={{opacity: "0", top: "50%", left: "50%", transform: "translate(-50% ,-50%)",zIndex: "5" }}
+              style={{
+                opacity: "0",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50% ,-50%)",
+                zIndex: "5",
+              }}
             >
               feature 4
             </div>
-
           </div>
         </section>
         {/* <section className="section-12"></section> */}
