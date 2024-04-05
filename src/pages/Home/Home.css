@@ -32,11 +32,11 @@ section {
   background: rgb(255, 255, 255);
   background: linear-gradient(
     128deg,
-    rgba(255, 255, 255, 1) 30%,
-    rgba(247, 255, 173, 1) 50%,
-    rgba(194, 247, 196, 1) 81%,
-    rgba(181, 255, 237, 1) 97%,
-    rgba(255, 255, 255, 1) 100%
+    var(--gradient-1) 30%,
+    var(--gradient-2) 50%,
+    var(--gradient-3) 71%,
+    var(--gradient-4) 87%,
+    var(--gradient-5) 100%
   );
 }
 
@@ -44,11 +44,11 @@ section {
   background: rgb(255, 255, 255);
   background: linear-gradient(
     128deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(247, 255, 173, 1) 28%,
-    rgba(194, 247, 196, 1) 51%,
-    rgba(181, 255, 237, 1) 67%,
-    rgba(255, 255, 255, 1) 100%
+    var(--gradient-1) 0%,
+    var(--gradient-2) 28%,
+    var(--gradient-3) 51%,
+    var(--gradient-4) 67%,
+    var(--gradient-5) 100%
   );
 }
 
@@ -374,17 +374,29 @@ section {
 
 .card {
   color: #224;
-  border: px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 20px;
   background: linear-gradient(
     120deg,
-    rgba(255, 255, 255, 0.25),
-    rgba(255, 255, 255, 0.75),
+    rgba(255, 255, 255, 0.274),
+    16%,
+    rgba(255, 255, 255, 0.692),
     70%,
-    rgba(255, 255, 255, 0.25)
+    rgb(255 255 255 / 22%)
   );
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.gradient-bg {
+  background: rgb(162, 80, 245);
+  background: linear-gradient(
+    317deg,
+    rgba(162, 80, 245, 0.6474964985994398) 0%,
+    rgba(255, 255, 255, 0.5102415966386555) 74%,
+    rgba(255, 255, 255, 0.3757878151260504) 97%
+  );
 }
 
 .gradient-text {

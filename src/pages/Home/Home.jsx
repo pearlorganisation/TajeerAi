@@ -433,10 +433,10 @@ const Home = () => {
           </div>
         </section>
         <section className="section-2 bg-gray-100 text-center">
-          <div class="card w-[600px] h-[300px] flex flex-col justify-evenly  text-center absolute top-1/2 left-1/2 z-[999] -translate-x-1/2 -translate-y-1/2">
-            <p className="text-7xl font-semibold">Hey partner!</p>
-            <p className="text-6xl font-semibold inline-block text-transparent bg-clip-text gradient-text">
-              Welcome to Tajer AI
+          <div class={`card w-[600px] h-[350px] flex flex-col justify-evenly  text-center absolute top-1/2 left-1/2 z-[99] -translate-x-1/2 -translate-y-1/2  transition duration-300`}>
+            <p className="text-6xl font-semibold">Hey there!</p>
+            <p className="text-6xl font-semibold py-[10px] inline-block text-transparent bg-clip-text gradient-text">
+              Welcome to Tajer AI!
             </p>
           </div>
         </section>
