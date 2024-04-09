@@ -13,10 +13,10 @@ const Header = () => {
     ]
 
     return (
-        <nav className=" font-base text-white w-full md:static bg-transparent">
+        <nav className=" font-base text-black w-full md:static bg-transparent">
             <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
                 <div className="flex items-center justify-between py-4 md:py-5 md:block w-full">
-                    <a href="#" className='font-semibold text-2xl'>
+                    <a href="#" className='font-semibold text-3xl'>
                         Tajer Ai
                     </a>
                     <div className="md:hidden">
