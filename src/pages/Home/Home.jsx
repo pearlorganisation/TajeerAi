@@ -34,11 +34,11 @@ const Home = () => {
 
   // refs
   const cloudRef = useRef(null);
-  const section5ref = useRef();
-  const section6ref = useRef();
-  const section7ref = useRef();
-  const section8ref = useRef();
-  const section9ref = useRef();
+  // const section5ref = useRef();
+  // const section6ref = useRef();
+  // const section7ref = useRef();
+  // const section8ref = useRef();
+  // const section9ref = useRef();
 
   const section11ref = useRef();
 
@@ -57,6 +57,11 @@ const Home = () => {
 
   useGSAP(() => {
     // timeline 1
+
+    gsap.to("#welcome", {
+      scrollTrigger: {},
+    });
+
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: "#path1",
@@ -131,13 +136,13 @@ const Home = () => {
           setThunderAnimation1(true);
           setThunderAnimation2(true);
           setThunderAnimation3(true);
-          gsap.set('#thunder1', {
+          gsap.set("#thunder1", {
             opacity: 1,
             ease: "none",
-          })
+          });
         },
         onEnterBack: () => {
-          console.log('on enter back')
+          console.log("on enter back");
           setShowSideThunder(false);
           setShowCenterThunder(false);
           setThunderAnimation1(false);
@@ -169,7 +174,7 @@ const Home = () => {
         start: "center top",
         end: "bottom center",
         scrub: true,
-        markers: true,  
+        markers: true,
 
         onEnter: () => {
           setShowBulb(true);
@@ -213,7 +218,7 @@ const Home = () => {
           setThunderAnimation3(true);
           setThunderAnimation2(true);
           setThunderAnimation2Shake(false);
-        }
+        },
       },
     });
 
@@ -223,8 +228,6 @@ const Home = () => {
       ease: "none",
     });
 
-
-
     tl2.to("#thunder2", {
       // duration: 1,
       scrub: true,
@@ -233,8 +236,6 @@ const Home = () => {
       height: "150px",
       ease: "none",
     });
-
-  
 
     // decrease bolt size and vanish when it hits bulb
 
@@ -382,6 +383,12 @@ const Home = () => {
     <>
       <div id="track">
         <section className="section-1">
+          <div className="box">
+            <div className="wave -one"></div>
+            <div className="wave -two"></div>
+            <div className="wave -three"></div>
+          </div>
+
           {/* animated elements */}
           <div id="animated-element" className="">
             <img src="/Cloud.png" alt="Cloud" id="cloud" ref={cloudRef} />
@@ -451,15 +458,18 @@ const Home = () => {
             </p>
           </div> */}
           <div
-            className={` w-[600px] h-[350px] flex flex-col justify-evenly  text-center absolute top-1/2 left-1/2 z-[99] -translate-x-1/2 -translate-y-1/2  transition duration-300`}
+            className={` w-[800px] h-[350px] flex flex-col justify-evenly  text-center absolute top-1/2 left-1/2 z-[99] -translate-x-1/2 -translate-y-1/2  transition duration-300`}
           >
-            <p className="text-6xl font-semibold py-[10px]">
+            <p
+              id="welcome"
+              className="w-full text-7xl font-semibold py-[10px] drop-shadow-xl"
+            >
               Welcome to Tajer AI! :)
             </p>
           </div>
         </section>
         <section className="section-3 text-center text-white">
-          <div className="custom-shape-divider-top2 ">
+          <div className="custom-shape-divider-top2">
             <svg
               data-name="Layer 1"
               xmlns="http://www.w3.org/2000/svg"
@@ -836,6 +846,7 @@ const Home = () => {
             </div>
           </div>
         </section>
+
         {/* <section className="section-12"></section> */}
       </div>
     </>
