@@ -123,37 +123,42 @@ const Home = () => {
         start: "top top",
         end: "center center",
         scrub: true,
-        // markers: true,
+        markers: true,
         onEnter: () => {
-          section5ref.current.style.backgroundColor = "#747d89";
+          // section5ref.current.style.backgroundColor = "#747d89";
           setShowSideThunder(true);
           setShowCenterThunder(true);
           setThunderAnimation1(true);
           setThunderAnimation2(true);
           setThunderAnimation3(true);
+          gsap.set('#thunder1', {
+            opacity: 1,
+            ease: "none",
+          })
         },
         onEnterBack: () => {
-          setShowSideThunder(true);
-          setShowCenterThunder(true);
-          setThunderAnimation1(true);
-          setThunderAnimation2(true);
-          setThunderAnimation3(true);
-        },
-        onLeave: () => {
-          setShowSideThunder(false);
-          // setShowCenterThunder(false)
-          setThunderAnimation1(false);
-          // setThunderAnimation2(false);
-          setThunderAnimation3(false);
-        },
-        onLeaveBack: () => {
-          section5ref.current.style.backgroundColor = "#d1fae5";
+          console.log('on enter back')
           setShowSideThunder(false);
           setShowCenterThunder(false);
           setThunderAnimation1(false);
           setThunderAnimation2(false);
           setThunderAnimation3(false);
         },
+        // onLeave: () => {
+        //   setShowSideThunder(false);
+        //   // setShowCenterThunder(false)
+        //   setThunderAnimation1(false);
+        //   // setThunderAnimation2(false);
+        //   setThunderAnimation3(false);
+        // },
+        // onLeaveBack: () => {
+        //   // section5ref.current.style.backgroundColor = "#d1fae5";
+        //   setShowSideThunder(false);
+        //   setShowCenterThunder(false);
+        //   setThunderAnimation1(false);
+        //   setThunderAnimation2(false);
+        //   setThunderAnimation3(false);
+        // },
       },
     });
 
@@ -164,10 +169,11 @@ const Home = () => {
         start: "center top",
         end: "bottom center",
         scrub: true,
-        // markers: true,
+        markers: true,  
+
         onEnter: () => {
           setShowBulb(true);
-
+          // console.log('enter')
           gsap.set("#thunder2", {
             position: "",
             top: "",
@@ -177,7 +183,6 @@ const Home = () => {
           });
         },
         onEnterBack: () => {
-          console.log("enter back");
           setThunderAnimation2(true);
           setThunderAnimation2Shake(false);
           gsap.set("#thunder2", {
@@ -189,12 +194,11 @@ const Home = () => {
           });
         },
         onLeave: () => {
-          // setShowCenterThunder(true);
-          // setThunderAnimation1(false);
+          setShowSideThunder(false);
+          setThunderAnimation1(false);
+          setThunderAnimation3(false);
           setThunderAnimation2(false);
           setThunderAnimation2Shake(true);
-          // setThunderAnimation3(false);
-          // setThunderAnimation2(false);
           gsap.set("#thunder2", {
             position: "fixed",
             top: "50%",
@@ -203,11 +207,13 @@ const Home = () => {
             opacity: "1",
           });
         },
-        // onLeaveBack: () => {
-
-        //   setThunderAnimation2(true);
-        //   setThunderAnimation2Shake(false);
-        // }
+        onLeaveBack: () => {
+          setShowSideThunder(true);
+          setThunderAnimation1(true);
+          setThunderAnimation3(true);
+          setThunderAnimation2(true);
+          setThunderAnimation2Shake(false);
+        }
       },
     });
 
@@ -217,26 +223,18 @@ const Home = () => {
       ease: "none",
     });
 
-    tl2.to("#thunder1", {
-      // duration: 1,
-      opacity: 1,
-      ease: "none",
-    });
+
 
     tl2.to("#thunder2", {
       // duration: 1,
       scrub: true,
       // top: "50%",
-      // transform: "translate(-50%. -50%)",
+      transform: "translate(-50%. -50%)",
       height: "150px",
       ease: "none",
     });
 
-    tl2.to("#thunder3", {
-      // duration: 1,
-      opacity: 0,
-      ease: "none",
-    });
+  
 
     // decrease bolt size and vanish when it hits bulb
 
@@ -433,7 +431,7 @@ const Home = () => {
           </div>
         </section>
         <section className="section-2 relative text-white text-center">
-          <div class="custom-shape-divider-top">
+          <div className="custom-shape-divider-top">
             <svg
               data-name="Layer 1"
               xmlns="http://www.w3.org/2000/svg"
@@ -442,18 +440,18 @@ const Home = () => {
             >
               <path
                 d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                class="shape-fill"
+                className="shape-fill"
               ></path>
             </svg>
           </div>
-          {/* <div class={`card w-[600px] h-[350px] flex flex-col justify-evenly  text-center absolute top-1/2 left-1/2 z-[99] -translate-x-1/2 -translate-y-1/2  transition duration-300`}>
+          {/* <div className={`card w-[600px] h-[350px] flex flex-col justify-evenly  text-center absolute top-1/2 left-1/2 z-[99] -translate-x-1/2 -translate-y-1/2  transition duration-300`}>
             <p className="text-6xl font-semibold">Hey there!</p>
             <p className="text-6xl font-semibold py-[10px] inline-block text-transparent bg-clip-text gradient-text">
               Welcome to Tajer AI!
             </p>
           </div> */}
           <div
-            class={` w-[600px] h-[350px] flex flex-col justify-evenly  text-center absolute top-1/2 left-1/2 z-[99] -translate-x-1/2 -translate-y-1/2  transition duration-300`}
+            className={` w-[600px] h-[350px] flex flex-col justify-evenly  text-center absolute top-1/2 left-1/2 z-[99] -translate-x-1/2 -translate-y-1/2  transition duration-300`}
           >
             <p className="text-6xl font-semibold py-[10px]">
               Welcome to Tajer AI! :)
@@ -461,7 +459,7 @@ const Home = () => {
           </div>
         </section>
         <section className="section-3 text-center text-white">
-          <div class="custom-shape-divider-top2 ">
+          <div className="custom-shape-divider-top2 ">
             <svg
               data-name="Layer 1"
               xmlns="http://www.w3.org/2000/svg"
@@ -470,7 +468,7 @@ const Home = () => {
             >
               <path
                 d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                class="shape-fill"
+                className="shape-fill"
               ></path>
             </svg>
           </div>
@@ -485,7 +483,7 @@ const Home = () => {
             width="100%"
             height="100%"
             xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
             version="1.1"
           >
             <path
@@ -513,7 +511,7 @@ const Home = () => {
             width="100%"
             height="100%"
             xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
             version="1.1"
           >
             <path
