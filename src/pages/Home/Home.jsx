@@ -467,8 +467,7 @@ const Home = () => {
               Welcome to Tajer AI! :)
             </p>
           </div>
-        </section>
-        <section className="section-3 text-center text-white">
+
           <div className="custom-shape-divider-top2">
             <svg
               data-name="Layer 1"
@@ -483,6 +482,7 @@ const Home = () => {
             </svg>
           </div>
         </section>
+        <section className="section-3 text-center text-white"></section>
 
         <section className="section-4 relative"></section>
 

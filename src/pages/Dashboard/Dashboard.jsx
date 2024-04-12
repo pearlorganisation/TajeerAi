@@ -1,44 +1,60 @@
 import React from "react";
 import style from "./style.module.css";
+import creativityAnimation from "../../../public/lottie/creativityAnimation.json"
+
+
 
 const Dashboard = () => {
   const contentData = [
     {
-      title: "Create new business",
+      title: "Create a new business",
       desc: "",
+      lottie: (
+        <>
+          <dotlottie-player src="https://lottie.host/4cab4041-caa0-47fd-8608-69db92ba52ee/5jqIrEDet2.json"    background="transparent" speed="1" style={{width: '300px', height: '300px'}} loop autoplay></dotlottie-player>
+        </>
+      )
     },
     {
-      title: "Manage current businesses",
+      title: "Manage your current businesses",
       desc: "",
     },
   ];
 
   return (
-    <div className="min-h-dvh w-full px-8 text-gray-50 flex flex-col gap-8 md:gap-14 md:pt-4">
-      <div className="w-full text-center text-2xl md:text-4xl font-semibold">
-        <p>Greetings!</p>
-        <p>Abhishek Bahuguna</p>
-      </div>
-      <div className="flex justify-center ">
-      <div className="flex flex-row flex-wrap justify-between gap-3 w-full sm:w-[70%]">
-        {contentData?.map((item) => {
-          return (
-            <div
-              class={`${style.card2} group overflow-hidden  px-6 py-4 rounded-md cursor-pointer w-full md:w-[49%] h-[300px] shadow-lg shadow-[#19142c]`}
-            >
-              <p
-                className="text-5xl text-wrap font-extrabold"
-                style={{ wordSpacing: "100vw", lineHeight: "60px" }}
-              >
-                {" "}
-                {item?.title}
-              </p>
-              <p className="text-lg">{item?.desc}</p>
-              <div class="relative z-10 flex flex-col justify-between before:absolute before:-left-4 before:-top-16 before:h-28 before:w-28 before:rounded-full before:border-8 before:bg-transparent before:opacity-10 before:blur-none before:duration-700 group-hover:before:left-48  group-hover:before:scale-125 group-hover:before:blur"></div>
-            </div>
-          );
-        })}
-      </div>
+    <div className={`w-full px-8 h-screen ${style.scatteredForcefieldsBg}`}>
+    
+      <div className="flex flex-col gap-4 md:gap-8 md:pt-4">
+        <div className="w-full text-center text-2xl md:text-4xl font-semibold">
+          <p className="bg-gradient-to-r from-blue-600 via-blue-800 to-purple-800 inline-block text-transparent bg-clip-text py-2">
+            Greetings Abhishek!
+          </p>
+        </div>
+        <div className="w-full text-center font-medium text-xl text-blue-800">
+          How can we help today?
+        </div>
+        <div className="flex justify-center ">
+          <div className="flex flex-row flex-wrap justify-center gap-4 w-full sm:w-[70%]">
+            {contentData?.map((item) => {
+              return (
+                <div
+                  className={`odd:text-blue-500 even:text-purple-600 overflow-hidden bg-transparent border-[2px] odd:border-blue-500 even:border-purple-600 odd:hover:bg-blue-500 even:hover:bg-purple-600  hover:text-white  px-6 py-4 rounded-md cursor-pointer w-full md:w-[40%] h-[300px] shadow-sm odd:shadow-blue-600 even:shadow-[#4b2453] transition duration-300`}
+                >
+                  <p
+                    className="text-5xl text-wrap font-extrabold"
+                    style={{ wordSpacing: "100vw", lineHeight: "60px" }}
+                  >
+                    {" "}
+                    {item?.title}
+                    {item?.lottie}
+                  </p>
+                  <p className="text-lg">{item?.desc}</p>
+                  
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
