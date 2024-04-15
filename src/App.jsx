@@ -10,11 +10,12 @@ import Signup from "./pages/Signup/Signup";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Header from "./components/Header/Header";
 import FullPage from "./components/FullPage/FullPage";
+import ToggleCard from "./components/ToggleCards/ToggleCard";
 
 function App() {
 
   return (
-    <div className="gradientBg w-full">
+    <div className="w-full">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -22,6 +23,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/fullPage" element={<FullPage />} />
+        <Route path="/test" element={<ToggleCard />} />
       </Routes>
 
     </div>

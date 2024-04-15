@@ -4,10 +4,14 @@
 
 
 :root {
-    --gradient-1: rgba(255, 255, 255, 1);
-    --gradient-2: rgb(228, 160, 241);
-    --gradient-3: rgb(221, 128, 240);
-    --gradient-4: rgb(221, 163, 255);
-    --gradient-5: rgb(248, 195, 255);
+  --gradient-1: rgb(255 255 255);
+  --gradient-2: rgb(234, 243, 243);
+  --gradient-3: rgb(205 251 235);
+  --gradient-4: rgb(181 247 215);
+  --gradient-5: rgb(211 245 228);
   }
+  
+
+  
+
   

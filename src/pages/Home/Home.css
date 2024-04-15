@@ -41,8 +41,24 @@ section {
 }
 
 .section-2 {
-  background: rgb(0, 119, 255);
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradientAnimation 15s ease infinite;
 }
+
+@keyframes gradientAnimation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
 
 .section-5 {
   height: 300vh;
@@ -57,7 +73,7 @@ section {
 }
 
 .section-9 {
-  background-color: #3a3d42;
+  background-color: #4e0582;
   height: 300vh;
 }
 
@@ -318,7 +334,7 @@ section {
 .mouse-container {
   width: 100vw;
   height: 100%;
-  /* background-color: #c9d6df; */
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -428,11 +444,12 @@ section {
 
 .custom-shape-divider-top2 {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
   overflow: hidden;
   line-height: 0;
+  transform: rotateX(180deg) rotateY(180deg);
 }
 
 .custom-shape-divider-top2 svg {
@@ -440,8 +457,156 @@ section {
   display: block;
   width: calc(100% + 1.3px);
   height: 150px;
+  
 }
 
 .custom-shape-divider-top2 .shape-fill {
-  fill: rgb(0, 119, 255);
+  fill: #ffffff;
+}
+
+
+
+
+
+
+/*waves****************************/
+
+
+.box {
+  position: relative;
+  top: 10%;
+  transform: rotate(80deg);
+  left: -25%;
+  z-index: 0;
+}
+
+.wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: .4;
+  position: absolute;
+  top: 3%;
+  left: 10%;
+  background-color: #09b5f3;
+  width: 100vw;
+  height: 100vw;
+  margin-left: -150px;
+  margin-top: -250px;
+  transform-origin: 50% 48%;
+  border-radius: 43%;
+  animation: drift 7000ms infinite linear;
+}
+
+.wave.-three {
+  animation: drift 7500ms infinite linear;
+  position: fixed;
+  background: rgb(170, 3, 236);
+  
+}
+
+.wave.-two {
+  animation: drift 3000ms infinite linear;
+  opacity: .1;
+  position: fixed;
+  background: rgb(255, 51, 0);
+
+}
+
+.box:after {
+  content: '';
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes drift {
+  from { transform: rotate(0deg); }
+  from { transform: rotate(360deg); }
+}
+
+/*LOADING SPACE*/
+
+.contain {
+  animation-delay: 4s;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+
+  background: #25a7d7;
+  background: -webkit-linear-gradient(#25a7d7, #2962FF);
+  background: linear-gradient(#25a7d7, #25a7d7);
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 5px;
+}
+
+/*Animation*/
+.icon:nth-child(2) img {-webkit-animation-delay: 0.2s;animation-delay: 0.2s}
+.icon:nth-child(3) img {-webkit-animation-delay: 0.3s;animation-delay: 0.3s}
+.icon:nth-child(4) img {-webkit-animation-delay: 0.4s;animation-delay: 0.4s}
+
+.icon img {
+  -webkit-animation: anim 2s ease infinite;
+  animation: anim 2s ease infinite;
+  -webkit-transform: scale(0,0) rotateZ(180deg);
+  transform: scale(0,0) rotateZ(180deg);
+}
+
+@-webkit-keyframes anim{
+  0% {
+    -webkit-transform: scale(0,0) rotateZ(-90deg);
+    transform: scale(0,0) rotateZ(-90deg);opacity:0
+  }
+  30% {
+    -webkit-transform: scale(1,1) rotateZ(0deg);
+    transform: scale(1,1) rotateZ(0deg);opacity:1
+  }
+  50% {
+    -webkit-transform: scale(1,1) rotateZ(0deg);
+    transform: scale(1,1) rotateZ(0deg);opacity:1
+  }
+  80% {
+    -webkit-transform: scale(0,0) rotateZ(90deg);
+    transform: scale(0,0) rotateZ(90deg);opacity:0
+  }
+}
+
+@keyframes anim{
+  0% {
+    -webkit-transform: scale(0,0) rotateZ(-90deg);
+    transform: scale(0,0) rotateZ(-90deg);opacity:0
+  }
+  30% {
+    -webkit-transform: scale(1,1) rotateZ(0deg);transform: scale(1,1) rotateZ(0deg);opacity:1
+  }
+  50% {
+    -webkit-transform: scale(1,1) rotateZ(0deg);
+    transform: scale(1,1) rotateZ(0deg);opacity:1
+  }
+  80% {
+    -webkit-transform: scale(0,0) rotateZ(90deg);
+    transform: scale(0,0) rotateZ(90deg);opacity:0
+  }
 }
