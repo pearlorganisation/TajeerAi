@@ -5,7 +5,12 @@
 }
 
 .gradientBg {
-  background: linear-gradient(128deg, var(--gradient-1) 0%, var(--gradient-2) 67%, var(--gradient-3) 99%);
+  background: linear-gradient(
+    128deg,
+    var(--gradient-1) 0%,
+    var(--gradient-2) 67%,
+    var(--gradient-3) 99%
+  );
 }
 
 .cloud-container {
@@ -23,4 +28,3 @@
   display: grid;
   place-items: center;
 }
-
