@@ -9,6 +9,7 @@ import Signin from "./pages/Signin/Signin";
 import Signup from "./pages/Signup/Signup";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Header from "./components/Header/Header";
+import FullPage from "./components/FullPage/FullPage";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/fullPage" element={<FullPage />} />
       </Routes>
 
     </div>
