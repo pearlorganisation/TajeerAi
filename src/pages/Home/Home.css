@@ -489,8 +489,8 @@ section {
   top: 3%;
   left: 10%;
   background-color: #09b5f3;
-  width: 1200px;
-  height: 1000px;
+  width: 100vw;
+  height: 100vw;
   margin-left: -150px;
   margin-top: -250px;
   transform-origin: 50% 48%;

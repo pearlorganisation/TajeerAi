@@ -32,6 +32,9 @@ const Home = () => {
   const [shouldScroll, setShouldScroll] = useState(false);
   const [mounted, setMounted] = useState(false);
 
+  //state for window width
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   // refs
   const cloudRef = useRef(null);
   // const section5ref = useRef();
@@ -379,6 +382,25 @@ const Home = () => {
     section11ref.current.style.backgroundColor = "#8a3d3d"; // Change this to the desired color
   };
 
+  // useEffect for window width
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setWindowWidth(width);
+    };
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Call handleResize once to set initial class
+    handleResize();
+
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       <div id="track">
@@ -416,18 +438,31 @@ const Home = () => {
               }`}
             />
           </div>
-          <svg
-            viewBox="0 0 1623 2685"
-            fill="none"
-            // preserveAspectRatio="xMidYMax meet"
-          >
-            <path
-              id="path1"
-              d="M1622.5 0.5C1589.67 150.667 1447.7 511.4 1142.5 753C837.3 994.6 549.667 1117.67 444 1149C345 1183.67 137.1 1275.8 97.5 1367C48 1481 -11.5 1515.5 3.50001 1911.5C15.5 2228.3 332.167 2390.17 489 2431.5C593 2464.5 806.9 2561.2 830.5 2684"
-              stroke="red"
-              strokeOpacity="0"
-            />
-          </svg>
+
+          {windowWidth > 1080 && (
+            <svg
+              viewBox="0 0 1623 2685"
+              fill="none"
+              // preserveAspectRatio="xMidYMax meet"
+            >
+              <path
+                id="path1"
+                d="M1622.5 0.5C1589.67 150.667 1447.7 511.4 1142.5 753C837.3 994.6 549.667 1117.67 444 1149C345 1183.67 137.1 1275.8 97.5 1367C48 1481 -11.5 1515.5 3.50001 1911.5C15.5 2228.3 332.167 2390.17 489 2431.5C593 2464.5 806.9 2561.2 830.5 2684"
+                stroke="red"
+                strokeOpacity="0"
+              />
+            </svg>
+          )}
+
+          {windowWidth <= 1080 && (
+            <svg viewBox="0 0 822 2378" fill="none">
+              <path
+                id="path1"
+                d="M821.5 1C756.833 50.6667 598.4 190.3 482 351.5C399.667 463.5 226.1 709.9 190.5 799.5C146 911.5 93.5 1042 19 1314.5C-40.6 1532.5 63.8333 1736.33 123.5 1811C164.5 1857 273.4 1966.9 381 2038.5C394.667 2059.67 420.5 2108.7 414.5 2135.5C408.5 2162.3 412 2236.33 414.5 2270V2378"
+                stroke="red"
+              />
+            </svg>
+          )}
 
           {/* scroll down animation */}
           <div className="mouse-container absolute bottom-0">
@@ -458,11 +493,11 @@ const Home = () => {
             </p>
           </div> */}
           <div
-            className={` w-[800px] h-[350px] flex flex-col justify-evenly  text-center absolute top-1/2 left-1/2 z-[99] -translate-x-1/2 -translate-y-1/2  transition duration-300`}
+            className={` w-full h-[350px] flex flex-col justify-evenly  text-center absolute top-1/2 left-1/2 z-[99] -translate-x-1/2 -translate-y-1/2  transition duration-300`}
           >
             <p
               id="welcome"
-              className="w-full text-7xl font-semibold py-[10px] drop-shadow-xl"
+              className="w-full text-lg md:text-7xl font-semibold py-[10px] drop-shadow-xl"
             >
               Welcome to Tajer AI! :)
             </p>
@@ -482,11 +517,43 @@ const Home = () => {
             </svg>
           </div>
         </section>
-        <section className="section-3 text-center text-white"></section>
+        <section className="section-3 relative text-center text-white">
+          <div
+            className={`w-2/5 h-[350px] flex flex-col justify-center text-center absolute top-1/2 md:right-10 z-[0] -translate-y-1/2 px-3  transition duration-500  `}
+          >
+            <p className="text-4xl font-semibold text-purple-500">Hey there!</p>
+            <p className="text-2xl font-semibold py-[10px] text-purple-500">
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout.
+            </p>
+          </div>
+        </section>
 
-        <section className="section-4 relative"></section>
+        <section className="section-4 h-[100vh] relative">
+
+        <div
+            className={`w-2/5 h-[500px] flex flex-col justify-center text-center absolute top-0 md:left-10 z-[0] -translate-y-1/2 px-3  transition duration-500 `}
+          >
+            {/* <p className="text-4xl font-semibold text-green-700">Hey there!</p> */}
+            <p className="text-2xl font-semibold py-[10px] text-green-700">
+            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. 
+            </p>
+          </div>
+        </section>
 
         <section className="section-5 h-auto relative">
+
+        <div
+            className={`w-2/5 h-[500px] flex flex-col justify-center text-center absolute top-0 md:right-10 z-[0] -translate-y-1/2 px-3  transition duration-500 `}
+          >
+            {/* <p className="text-4xl font-semibold text-white">Hey there!</p> */}
+            <p className="text-2xl font-semibold py-[10px] text-blue-600">
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout.
+
+              Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+            </p>
+          </div>
           <svg
             id="visual"
             viewBox="0 0 900 600"
