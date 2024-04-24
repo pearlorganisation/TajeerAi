@@ -2,16 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --gradient-1: rgb(255 255 255);
   --gradient-2: rgb(234, 243, 243);
   --gradient-3: rgb(205 251 235);
   --gradient-4: rgb(181 247 215);
   --gradient-5: rgb(211 245 228);
+}
+
+@layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
   }
-  
-
-  
-
-  
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
