@@ -106,6 +106,7 @@ import React, { useRef } from 'react'
 import { TfiAngleLeft } from "react-icons/tfi";
 import { TfiAngleRight } from "react-icons/tfi";
 import FullPageSlider from './FullPageSlider';
+import BusinessVariationTabs from '../BusinessVariationTabs/BusinessVariationTabs';
 
 const FullPage = () => {
 
@@ -165,6 +166,7 @@ const FullPage = () => {
     <>
 
       <FullPageSlider />
+      <BusinessVariationTabs />
     </>
   )
 }
