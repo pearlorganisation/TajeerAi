@@ -1,4 +1,3 @@
-
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 // import CloudAnimation from "./components/CloudAnimation";
@@ -11,9 +10,9 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Header from "./components/Header/Header";
 import FullPage from "./components/FullPage/FullPage";
 import ToggleCard from "./components/ToggleCards/ToggleCard";
+import Service from "./components/Service/Service";
 
 function App() {
-
   return (
     <div className="w-full">
       <Header />
@@ -24,8 +23,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/fullPage" element={<FullPage />} />
         <Route path="/test" element={<ToggleCard />} />
+        <Route path="/service" element={<Service />} />
       </Routes>
-
     </div>
   );
 }
